@@ -8,5 +8,8 @@ ___
 - Do đã xong **C3** 👉 start: _**E20**_ trở đi
 ___
 ## 🌅Ngày 19/2:
-- E20 -> :
-	- cách lấy model: mixamo + animation
+- E20 -> E28:
+	- ♦Cách lấy model: **Mixamo** + animation(lúc chọn thì tích "In Place")
+	- ♦Material cơ bản
+	- ♦Setup đường đi enemy
+	- ♦Navmesh cơ bản
