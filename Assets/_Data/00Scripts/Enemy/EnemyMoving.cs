@@ -10,6 +10,10 @@ public class EnemyMoving : MonoBehaviour
 
     private void Start()
     {
+    }
+
+    private void FixedUpdate()
+    {
         navAgent.SetDestination(target.transform.position);
     }
 
