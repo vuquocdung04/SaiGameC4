@@ -7,11 +7,18 @@ public class EnemyMoving : DungMonoBehaviour
 {
     [Header("EnemyMoving")]
     [SerializeField] protected EnemyCtrl enemyCtrl;
-    [Space(10)]
-    [SerializeField] protected GameObject target;
+    [SerializeField] protected string pathName = "path_1";
+    [SerializeField] protected Path enemyPath;
+    [SerializeField] protected Point currentPoint;
+    [SerializeField] protected float pointDistance = Mathf.Infinity;
+    [SerializeField] protected float stopDistance = 1f;
+
+    [SerializeField] protected bool isFinish;
+    //[SerializeField] protected int pathIndex = 0;
 
     private void Start()
     {
+        this.LoadEnemyPath();
     }
 
     private void FixedUpdate()
@@ -25,7 +32,6 @@ public class EnemyMoving : DungMonoBehaviour
     {
         base.LoadComponents();
         this.LoadEnemyCtrl();
-        this.LoadTarget();
     }
 
     protected virtual void LoadEnemyCtrl()
@@ -34,19 +40,40 @@ public class EnemyMoving : DungMonoBehaviour
         this.enemyCtrl = GetComponentInParent<EnemyCtrl>();
         Debug.LogWarning(transform.name + ": LoadEnemyCtrl", gameObject);
     }
-    protected virtual void LoadTarget()
-    {
-        if (this.target != null) return;
-        this.target = GameObject.Find("TargetMoving");
-        Debug.LogWarning(transform.name + ": LoadTarget", gameObject);
-    }
 
 
     #endregion
 
     protected virtual void Moving()
     {
-        enemyCtrl.Agent.SetDestination(target.transform.position);
+        this.FindNextPoint();
+
+        if (this.currentPoint == null || this.isFinish)
+        {
+            this.enemyCtrl.Agent.isStopped = true;
+            return;
+        }
+            
+        this.enemyCtrl.Agent.SetDestination(this.currentPoint.transform.position);
+    }
+
+    protected virtual void FindNextPoint()
+    {
+        if (this.currentPoint == null) this.currentPoint = this.enemyPath.GetPoint(0);
+
+        this.pointDistance = Vector3.Distance(transform.position, currentPoint.transform.position);
+
+        if(this.pointDistance < this.stopDistance)
+        {
+            this.currentPoint = this.currentPoint.NextPoint;
+        }
+    }
+
+    protected virtual void LoadEnemyPath()
+    {
+        if (this.enemyPath != null) return;
+        this.enemyPath = PathsManager.Instance.GetPath(this.pathName);
+        Debug.LogWarning(transform.name + ": LoadEnemyPath", gameObject);
     }
 
 }
