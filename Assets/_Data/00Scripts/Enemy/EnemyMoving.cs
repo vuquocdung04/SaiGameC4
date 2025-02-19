@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMoving : MonoBehaviour
+public class EnemyMoving : DungMonoBehaviour
 {
+    [Header("EnemyMoving")]
+    [SerializeField] protected EnemyCtrl enemyCtrl;
+    [Space(10)]
     [SerializeField] protected GameObject target;
-    [SerializeField] protected NavMeshAgent navAgent;
 
     private void Start()
     {
@@ -14,7 +16,37 @@ public class EnemyMoving : MonoBehaviour
 
     private void FixedUpdate()
     {
-        navAgent.SetDestination(target.transform.position);
+        this.Moving();
+    }
+
+
+    #region LoadComponents
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadEnemyCtrl();
+        this.LoadTarget();
+    }
+
+    protected virtual void LoadEnemyCtrl()
+    {
+        if (this.enemyCtrl != null) return;
+        this.enemyCtrl = GetComponentInParent<EnemyCtrl>();
+        Debug.LogWarning(transform.name + ": LoadEnemyCtrl", gameObject);
+    }
+    protected virtual void LoadTarget()
+    {
+        if (this.target != null) return;
+        this.target = GameObject.Find("TargetMoving");
+        Debug.LogWarning(transform.name + ": LoadTarget", gameObject);
+    }
+
+
+    #endregion
+
+    protected virtual void Moving()
+    {
+        enemyCtrl.Agent.SetDestination(target.transform.position);
     }
 
 }
