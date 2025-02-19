@@ -9,4 +9,4 @@ ___
 ___
 ## 🌅Ngày 19/2:
 - E20 -> :
-
+	- cách lấy model: mixamo + animation

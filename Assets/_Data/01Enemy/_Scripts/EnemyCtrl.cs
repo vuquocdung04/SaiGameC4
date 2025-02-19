@@ -23,6 +23,9 @@ public class EnemyCtrl : DungMonoBehaviour
     {
         if (this.agent != null) return;
         this.agent = GetComponent<NavMeshAgent>();
+        this.agent.angularSpeed = 200;
+        this.agent.speed = 2;
+        this.agent.acceleration = 150;  
         Debug.LogWarning(transform.name + ": LoadNavMeshAgent", gameObject);
     }
 
@@ -30,7 +33,6 @@ public class EnemyCtrl : DungMonoBehaviour
     {
         if (this.model != null) return;
         this.model = transform.Find("model");
-        this.model.localPosition = new Vector3(0,-0.57f,0);
 
         Debug.LogWarning(transform.name + ": LoadModel", gameObject);
     }
