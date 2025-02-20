@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8b4c25788ff874b9054b7372617e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 6603929010752934378}
   spawner: {fileID: 0}
   timeLife: 7
   currentTime: 7
@@ -60,7 +61,7 @@ GameObject:
   - component: {fileID: 4132237253953002585}
   - component: {fileID: 3742782921389075381}
   m_Layer: 0
-  m_Name: model
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,5 +199,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52a4856559a15d4788266596ae681bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawn: {fileID: 2492132402752312416}
+  despawnBase: {fileID: 2492132402752312416}
   speed: 10

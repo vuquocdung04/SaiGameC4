@@ -77,7 +77,7 @@ public class TowerTargeting : DungMonoBehaviour
     protected virtual void AddEnemy(Collider collider)
     {
         if (collider.name != Const.TOWER_TARGETABLE) return;
-        EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
+        EnemyCtrl enemyCtrl = collider.GetComponentInParent<EnemyCtrl>();
         this.enemies.Add(enemyCtrl);
         Debug.Log("AddEnemy: " + collider.name);
     }
@@ -86,7 +86,7 @@ public class TowerTargeting : DungMonoBehaviour
     {
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
-            if (collider.transform.parent = enemyCtrl.transform)
+            if (collider.transform.parent == enemyCtrl.transform)
             {
                 this.enemies.Remove(enemyCtrl);
                 return;

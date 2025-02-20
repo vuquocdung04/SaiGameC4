@@ -21,6 +21,7 @@ public class TowerCtrl : DungMonoBehaviour
     [SerializeField] protected List<FirePoint> firePoints = new();
     public List<FirePoint> FirePoints => firePoints;
 
+
     #region LoadComponents
     protected override void LoadComponents()
     {

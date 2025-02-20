@@ -21,7 +21,7 @@ public abstract class Spawner<T> : DungMonoBehaviour where T : PoolObj
     }
     public virtual T Spawn(T bulletPrefab, Vector3 parentPos)
     {
-        T newObj = Spawn(bulletPrefab);
+        T newObj = this.Spawn(bulletPrefab);
         newObj.transform.position = parentPos;
         return newObj;
     }

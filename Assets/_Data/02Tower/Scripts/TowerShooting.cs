@@ -7,7 +7,7 @@ public class TowerShooting : TowerAbstract
 {
     [Header("TowerShooting")]
     [SerializeField] protected EnemyCtrl enemyTarget;
-    [SerializeField] protected Bullet bullet;
+    //[SerializeField] protected Bullet bullet;
     [Space(10)]
     [SerializeField] protected int currentFirePoint = 0;
 
@@ -56,8 +56,11 @@ public class TowerShooting : TowerAbstract
         //neu khong co target => khong ban
         if (this.enemyTarget == null) return;
 
-        FirePoint firePoint = this.GetFirePoint();
-        Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
+        FirePoint firepoint = this.GetFirePoint();
+        //Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
+        Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet);
+        newBullet.transform.position = firepoint.transform.position;
+
         rotatorDirection = this.towerCtrl.Rotator.transform.forward;
         newBullet.transform.forward = rotatorDirection;
 

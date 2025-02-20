@@ -26,3 +26,15 @@ ___
 - 💡Fact:
 	- khi bấm chuột phải trong **scene** thì có thể dùng phím **A W S D** để di chuyển
 	- khi bấm chuột phải + lăn chuột 👉 chỉnh tốc độ zoom của A W S D
+- 🛠BUgg: Lỗi logic trong **if**
+	- trước giờ: biết **if** truyền vào true hoặc false
+		- vd: bool, ==,..
+	- Nhưng nếu truyền thế này: _**collider.transform.parent = enemyCtrl.transform**_ thì nó cũng không báo lỗi luôn
+	- 👉 vì toán tử _"="_ trả về giá trị vừa gán trức là enemyCtrl.transform,mà trong C# bất kỳ đối tượng nào khác **null** đều được coi là **true** trong điều kiện **if**
+	- 👉 từ đó: vật thể nào mang **collider** va chạm với nó có thể sẽ thành con của nó =))
+		- và tất nhiên nó sẽ đi theo vật thể luôn
+
+
+
+
+

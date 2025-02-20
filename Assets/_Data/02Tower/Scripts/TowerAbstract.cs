@@ -17,7 +17,8 @@ public abstract class TowerAbstract : DungMonoBehaviour
     protected virtual void LoadTowerCtrl()
     {
         if (this.towerCtrl != null) return;
-        this.towerCtrl = this.transform.parent.GetComponent<TowerCtrl>();
+        this.towerCtrl = GetComponentInParent<TowerCtrl>();
+        //this.towerCtrl = this.transform.parent.GetComponent<TowerCtrl>();
         Debug.LogWarning(transform.name + ": LoadTowerCtrl", gameObject);
     }
 }
