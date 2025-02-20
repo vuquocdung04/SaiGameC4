@@ -23,3 +23,6 @@ ___
 	- LookAt và LookRotation:
 		- LookAt → Khi bạn muốn đối tượng quay ngay lập tức.
 		- LookRotation + RotateTowards → Khi bạn muốn đối tượng xoay dần dần về hướng mục tiêu.
+- 💡Fact:
+	- khi bấm chuột phải trong **scene** thì có thể dùng phím **A W S D** để di chuyển
+	- khi bấm chuột phải + lăn chuột 👉 chỉnh tốc độ zoom của A W S D

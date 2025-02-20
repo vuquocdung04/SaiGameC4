@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Despawn<T> : DungMonoBehaviour
+public abstract class Despawn<T> : DespawnBase where T : PoolObj
 {
     [Header("Despawn")]
     [SerializeField] protected T parent;
@@ -25,6 +25,7 @@ public abstract class Despawn<T> : DungMonoBehaviour
     {
         base.LoadComponents();
         this.LoadTParent();
+        this.LoadSpawner();
     }
 
     protected virtual void LoadTParent()
@@ -33,6 +34,14 @@ public abstract class Despawn<T> : DungMonoBehaviour
         this.parent = transform.parent.GetComponent<T>();
         Debug.LogWarning(transform.name + ": LoadTParent", gameObject);
     }
+
+    protected virtual void LoadSpawner()
+    {
+        if (this.spawner != null) return;
+        this.spawner = GameObject.FindAnyObjectByType<Spawner<T>>();
+        Debug.LogWarning(transform.name + ": LoadSpawner", gameObject);
+    }
+
     #endregion
 
     protected virtual void DespawnChecking()
