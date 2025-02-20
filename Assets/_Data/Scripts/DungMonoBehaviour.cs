@@ -12,12 +12,17 @@ public class DungMonoBehaviour : MonoBehaviour
     protected virtual void Reset()
     {
         this.LoadComponents();
+        this.ResetValues();
     }
     protected virtual void LoadComponents()
     {
         //TODO: for override
     }
 
+    protected virtual void ResetValues()
+    {
+
+    }
 
 
 }

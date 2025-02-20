@@ -13,6 +13,12 @@ public class EnemyMoving : DungMonoBehaviour
     [SerializeField] protected float pointDistance = Mathf.Infinity;
     [SerializeField] protected float stopDistance = 1f;
 
+    [Header("Bool")]
+
+    [SerializeField] protected bool canMove;
+    // check xem di chuyen de doi anim
+    [SerializeField] protected bool isMoving;
+    // check toi diem cuoi
     [SerializeField] protected bool isFinish;
     //[SerializeField] protected int pathIndex = 0;
 
@@ -24,6 +30,7 @@ public class EnemyMoving : DungMonoBehaviour
     private void FixedUpdate()
     {
         this.Moving();
+        this.CheckMoving();
     }
 
 
@@ -41,11 +48,23 @@ public class EnemyMoving : DungMonoBehaviour
         Debug.LogWarning(transform.name + ": LoadEnemyCtrl", gameObject);
     }
 
+    protected virtual void LoadEnemyPath()
+    {
+        if (this.enemyPath != null) return;
+        this.enemyPath = PathsManager.Instance.GetPath(this.pathName);
+        Debug.LogWarning(transform.name + ": LoadEnemyPath", gameObject);
+    }
 
     #endregion
 
     protected virtual void Moving()
     {
+        if(!this.canMove)
+        {
+            this.enemyCtrl.Agent.isStopped = false;
+            return;
+        }
+
         this.FindNextPoint();
 
         if (this.currentPoint == null || this.isFinish)
@@ -69,11 +88,12 @@ public class EnemyMoving : DungMonoBehaviour
         }
     }
 
-    protected virtual void LoadEnemyPath()
+    protected virtual void CheckMoving()
     {
-        if (this.enemyPath != null) return;
-        this.enemyPath = PathsManager.Instance.GetPath(this.pathName);
-        Debug.LogWarning(transform.name + ": LoadEnemyPath", gameObject);
+        if(this.enemyCtrl.Agent.velocity.magnitude > 0.1f) this.isMoving = true;
+        else this.isMoving = false;
+
+        this.enemyCtrl.Animator.SetBool(Const.isMoving, isMoving);
     }
 
 }

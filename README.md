@@ -7,9 +7,11 @@ ___
 - E0 -> E19: các vấn đề cơ bản
 - Do đã xong **C3** 👉 start: _**E20**_ trở đi
 ___
-## 🌅Ngày 19/2:
-- E20 -> E28:
-	- ♦Cách lấy model: **Mixamo** + animation(lúc chọn thì tích "In Place")
-	- ♦Material cơ bản
-	- ♦Setup đường đi enemy
-	- ♦Navmesh cơ bản
+## 🌅Ngày 19/2: E20 -> E28
+- Cách lấy model: **Mixamo** + animation(lúc chọn thì tích "In Place")
+- Material cơ bản
+- Setup đường đi enemy
+- Navmesh cơ bản
+## 🌅Ngày 20/2: E29 ->
+- E29:
+	- 🔖CheckMoving: sau dùng observer thay cho fixedupdate

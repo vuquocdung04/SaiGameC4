@@ -10,13 +10,15 @@ public class EnemyCtrl : DungMonoBehaviour
     public NavMeshAgent Agent => agent;
 
     [SerializeField] protected Transform model;
-
+    [SerializeField] protected Animator _animator;
+    public Animator Animator => _animator;
     #region LoadComponents
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadNavMeshAgent();
         this.LoadModel();
+        this.LoadAnimator();
     }
 
     protected virtual void LoadNavMeshAgent()
@@ -35,6 +37,14 @@ public class EnemyCtrl : DungMonoBehaviour
         this.model = transform.Find("model");
 
         Debug.LogWarning(transform.name + ": LoadModel", gameObject);
+    }
+
+    protected virtual void LoadAnimator()
+    {
+        if (this._animator != null) return;
+        this._animator = this.model.GetComponent<Animator>();
+
+        Debug.LogWarning(transform.name + ": LoadAnimator", gameObject);
     }
 
     #endregion
