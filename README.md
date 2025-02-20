@@ -15,3 +15,4 @@ ___
 ## 🌅Ngày 20/2: E29 ->
 - E29:
 	- 🔖CheckMoving: sau dùng observer thay cho fixedupdate
+	- 🔖E32: tìm quái gần nhất, sau dùng observer

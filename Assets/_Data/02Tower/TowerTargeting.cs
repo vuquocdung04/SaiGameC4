@@ -12,7 +12,8 @@ public class TowerTargeting : DungMonoBehaviour
     [SerializeField] protected SphereCollider _sphereCollider;
     [SerializeField] protected EnemyCtrl nearest;
     [SerializeField] protected List<EnemyCtrl> enemies = new();
-
+    float nearestDistance;
+    float enemyDistance;
     private void FixedUpdate()
     {
         this.FindNearest();
@@ -58,7 +59,16 @@ public class TowerTargeting : DungMonoBehaviour
 
     protected virtual void FindNearest()
     {
-
+        nearestDistance = Mathf.Infinity;
+        foreach (EnemyCtrl enemyCtrl in this.enemies)
+        {
+            enemyDistance = Vector3.Distance(transform.position, enemyCtrl.transform.position);
+            if(enemyDistance < nearestDistance)
+            {
+                nearestDistance = enemyDistance;
+                this.nearest = enemyCtrl;
+            }
+        }
     }
 
     protected virtual void AddEnemy(Collider collider)
@@ -73,7 +83,7 @@ public class TowerTargeting : DungMonoBehaviour
     {
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
-            if (collider.transform.parent.name.Equals(enemyCtrl.name))
+            if (collider.transform.parent = enemyCtrl.transform)
             {
                 this.enemies.Remove(enemyCtrl);
                 return;
