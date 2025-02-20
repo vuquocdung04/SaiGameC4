@@ -16,3 +16,10 @@ ___
 - E29:
 	- 🔖CheckMoving: sau dùng observer thay cho fixedupdate
 	- 🔖E32: tìm quái gần nhất, sau dùng observer
+- 💡Fact:
+	- Static class:
+		- script "Const" dùng static hay bỏ static thì khi gọi Const.IsMoving như nhau?
+		- 👉 class static: không kế thừa hay kéo được vào inspector
+	- LookAt và LookRotation:
+		- LookAt → Khi bạn muốn đối tượng quay ngay lập tức.
+		- LookRotation + RotateTowards → Khi bạn muốn đối tượng xoay dần dần về hướng mục tiêu.

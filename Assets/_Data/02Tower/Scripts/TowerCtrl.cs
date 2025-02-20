@@ -18,6 +18,9 @@ public class TowerCtrl : DungMonoBehaviour
     [SerializeField] protected Bullet bullet;
     public Bullet Bullet => bullet;
 
+    [SerializeField] protected List<FirePoint> firePoints = new();
+    public List<FirePoint> FirePoints => firePoints;
+
     #region LoadComponents
     protected override void LoadComponents()
     {
@@ -26,6 +29,7 @@ public class TowerCtrl : DungMonoBehaviour
         this.LoadTowerTargeting();
         this.LoadBulletSpawner();
         this.LoadBullet();
+        this.LoadFirePoints();
     }
 
     protected virtual void LoadModel()
@@ -56,6 +60,12 @@ public class TowerCtrl : DungMonoBehaviour
         this.bullet = GetComponentInChildren<Bullet>();
         Debug.LogWarning(transform.name + ": LoadBullet", gameObject);
     }
-
+    protected virtual void LoadFirePoints()
+    {
+        if (this.firePoints.Count > 0) return;
+        FirePoint[] points = transform.GetComponentsInChildren<FirePoint>();
+        this.firePoints = new List<FirePoint>(points);
+        Debug.LogWarning(transform.name + ": LoadFirePoints", gameObject);
+    }
     #endregion
 }

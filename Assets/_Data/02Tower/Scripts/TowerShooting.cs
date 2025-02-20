@@ -5,15 +5,17 @@ using UnityEngine.AI;
 
 public class TowerShooting : TowerAbstract
 {
-    [SerializeField] protected EnemyCtrl enemyTarget;
+    [SerializeField] protected float targetLoadingCountDown = 1f;
+    [SerializeField] protected float shootCountDown = 1f;
     [SerializeField] protected float rotationSpeed = 2f;
+    [SerializeField] protected EnemyCtrl enemyTarget;
     [SerializeField] protected Bullet bullet;
     Vector3 directionToTarget;
     Vector3 newDirection;
     private void Start()
     {
-        //InvokeRepeating(nameof(TargetNearestLoading),2f,2f);
-        Invoke(nameof(TargetNearestLoading),1f);
+        InvokeRepeating(nameof(TargetNearestLoading), targetLoadingCountDown, targetLoadingCountDown);
+        InvokeRepeating(nameof(this.Shooting),shootCountDown,shootCountDown);
     }
     private void FixedUpdate()
     {
@@ -23,8 +25,6 @@ public class TowerShooting : TowerAbstract
     //tim Target gan nhat de nhin
     protected virtual void TargetNearestLoading()
     {
-        Invoke(nameof(TargetNearestLoading), 1f);
-
         this.enemyTarget = this.towerCtrl.TowerTargeting.NearestEnemy;
     }
     // nhin ve huong target
