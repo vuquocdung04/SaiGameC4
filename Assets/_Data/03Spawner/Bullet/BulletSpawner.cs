@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BulletSpawner : Spawner
+public class BulletSpawner : Spawner<Bullet>
 {
     //[Header("BulletSpawner")]
     public virtual Bullet Spawn(Bullet bulletPrefab)
@@ -12,7 +12,7 @@ public class BulletSpawner : Spawner
         Bullet newObj = Instantiate(bulletPrefab);
 
         // bullet sinh ra thi nho spawner cua no la ai
-        newObj.Despawn.SetSpawner(this);
+        newObj.Despawn.SetSpawner(this);    
         return newObj;
     }
     public virtual Bullet Spawn(Bullet bulletPrefab, Vector3 parentPos)
