@@ -56,10 +56,8 @@ public class TowerShooting : TowerAbstract
         //neu khong co target => khong ban
         if (this.enemyTarget == null) return;
 
-        FirePoint firepoint = this.GetFirePoint();
-        //Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
-        Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet);
-        newBullet.transform.position = firepoint.transform.position;
+        FirePoint firePoint = this.GetFirePoint();
+        Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
 
         rotatorDirection = this.towerCtrl.Rotator.transform.forward;
         newBullet.transform.forward = rotatorDirection;

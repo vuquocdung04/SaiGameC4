@@ -33,7 +33,7 @@ ___
 	- 👉 vì toán tử _"="_ trả về giá trị vừa gán trức là enemyCtrl.transform,mà trong C# bất kỳ đối tượng nào khác **null** đều được coi là **true** trong điều kiện **if**
 	- 👉 từ đó: vật thể nào mang **collider** va chạm với nó có thể sẽ thành con của nó =))
 		- và tất nhiên nó sẽ đi theo vật thể luôn
-
+	- [🔗**Link bugg**](https://youtu.be/07MBMTH6MPU).
 
 
 
