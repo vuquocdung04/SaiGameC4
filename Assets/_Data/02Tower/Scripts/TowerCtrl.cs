@@ -58,6 +58,8 @@ public class TowerCtrl : DungMonoBehaviour
     {
         if (this.bullet != null) return;
         this.bullet = GetComponentInChildren<Bullet>();
+
+        this.HidePrefab();
         Debug.LogWarning(transform.name + ": LoadBullet", gameObject);
     }
     protected virtual void LoadFirePoints()
@@ -68,4 +70,8 @@ public class TowerCtrl : DungMonoBehaviour
         Debug.LogWarning(transform.name + ": LoadFirePoints", gameObject);
     }
     #endregion
+    protected virtual void HidePrefab()
+    {
+        this.bullet.gameObject.SetActive(false);
+    }
 }

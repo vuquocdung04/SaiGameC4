@@ -5,11 +5,15 @@ using UnityEngine.AI;
 
 public class TowerShooting : TowerAbstract
 {
+    [Header("TowerShooting")]
+    [SerializeField] protected EnemyCtrl enemyTarget;
+    [SerializeField] protected Bullet bullet;
+    [Space(10)]
+    [SerializeField] protected int currentFirePoint = 0;
+
     [SerializeField] protected float targetLoadingCountDown = 1f;
     [SerializeField] protected float shootCountDown = 1f;
     [SerializeField] protected float rotationSpeed = 2f;
-    [SerializeField] protected EnemyCtrl enemyTarget;
-    [SerializeField] protected Bullet bullet;
     Vector3 directionToTarget;
     Vector3 newDirection;
     private void Start()
@@ -46,9 +50,22 @@ public class TowerShooting : TowerAbstract
 
     protected virtual void Shooting()
     {
+        //neu khong co target => khong ban
         if (this.enemyTarget == null) return;
-        //spawner
-        this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet);
-    }
 
+
+        //spawner
+        FirePoint firePoint = this.GetFirePoint();
+        Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
+
+        newBullet.gameObject.SetActive(true);
+    }
+    protected virtual FirePoint GetFirePoint()
+    {
+        FirePoint firePoint = this.towerCtrl.FirePoints[currentFirePoint];
+        this.currentFirePoint++;
+        if (this.currentFirePoint == this.towerCtrl.FirePoints.Count) this.currentFirePoint = 0;
+
+        return firePoint;
+    }
 }
