@@ -8,11 +8,24 @@ public class TowerCtrl : DungMonoBehaviour
     [SerializeField] protected Transform model;
     [SerializeField] protected Transform rotator;
     public Transform Rotator => rotator;
+
+    [SerializeField] protected TowerTargeting towerTargeting;
+    public TowerTargeting TowerTargeting => towerTargeting;
+
+    [SerializeField] protected BulletSpawner bulletSpawner;
+    public BulletSpawner BulletSpawner => bulletSpawner;
+
+    [SerializeField] protected Bullet bullet;
+    public Bullet Bullet => bullet;
+
     #region LoadComponents
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadModel();
+        this.LoadTowerTargeting();
+        this.LoadBulletSpawner();
+        this.LoadBullet();
     }
 
     protected virtual void LoadModel()
@@ -21,6 +34,27 @@ public class TowerCtrl : DungMonoBehaviour
         this.model = transform.Find("model");
         this.rotator = this.model.Find("Rotator");
         Debug.LogWarning(transform.name + ": LoadModel", gameObject);
+    }
+
+    protected virtual void LoadTowerTargeting()
+    {
+        if (this.towerTargeting != null) return;
+        this.towerTargeting = GetComponentInChildren<TowerTargeting>();
+        Debug.LogWarning(transform.name + ": LoadTowerTargeting", gameObject);
+    }
+
+    protected virtual void LoadBulletSpawner()
+    {
+        if (this.bulletSpawner != null) return;
+        this.bulletSpawner = FindObjectOfType<BulletSpawner>();
+        Debug.LogWarning(transform.name + ": LoadBulletSpawner", gameObject);
+    }
+
+    protected virtual void LoadBullet()
+    {
+        if (this.bullet != null) return;
+        this.bullet = GetComponentInChildren<Bullet>();
+        Debug.LogWarning(transform.name + ": LoadBullet", gameObject);
     }
 
     #endregion

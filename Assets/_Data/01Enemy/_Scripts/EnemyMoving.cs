@@ -15,9 +15,9 @@ public class EnemyMoving : DungMonoBehaviour
 
     [Header("Bool")]
 
-    [SerializeField] protected bool canMove;
+    [SerializeField] protected bool canMove = true;
     // check xem di chuyen de doi anim
-    [SerializeField] protected bool isMoving;
+    [SerializeField] protected bool isMoving = true;
     // check toi diem cuoi
     [SerializeField] protected bool isFinish;
     //[SerializeField] protected int pathIndex = 0;

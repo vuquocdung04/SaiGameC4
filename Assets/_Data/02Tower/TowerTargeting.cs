@@ -10,7 +10,8 @@ public class TowerTargeting : DungMonoBehaviour
 {
     [SerializeField] protected Rigidbody _rigidbody;
     [SerializeField] protected SphereCollider _sphereCollider;
-    [SerializeField] protected EnemyCtrl nearest;
+    [SerializeField] protected EnemyCtrl nearestEnemy;
+    public EnemyCtrl NearestEnemy => nearestEnemy;
     [SerializeField] protected List<EnemyCtrl> enemies = new();
     float nearestDistance;
     float enemyDistance;
@@ -68,7 +69,7 @@ public class TowerTargeting : DungMonoBehaviour
             if(enemyDistance < nearestDistance)
             {
                 nearestDistance = enemyDistance;
-                this.nearest = enemyCtrl;
+                this.nearestEnemy = enemyCtrl;
             }
         }
     }
