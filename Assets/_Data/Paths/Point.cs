@@ -24,7 +24,7 @@ public class Point : DungMonoBehaviour
             this.nextPoint = nextSibling.GetComponent<Point>();
         }
 
-        Debug.LogWarning(transform.name + ": LoadNextPoint", gameObject);
+        //Debug.LogWarning(transform.name + ": LoadNextPoint", gameObject);
     }
 
     #endregion

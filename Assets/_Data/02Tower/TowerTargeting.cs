@@ -18,6 +18,16 @@ public class TowerTargeting : DungMonoBehaviour
         this.FindNearest();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        this.AddEnemy(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        this.RemoveEnemy(other);
+    }
+
     #region LoadComponents
     protected override void LoadComponents()
     {
@@ -49,6 +59,26 @@ public class TowerTargeting : DungMonoBehaviour
     protected virtual void FindNearest()
     {
 
+    }
+
+    protected virtual void AddEnemy(Collider collider)
+    {
+        if (collider.name != Const.TOWER_TARGETABLE) return;
+        EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
+        this.enemies.Add(enemyCtrl);
+        Debug.Log("AddEnemy: " + collider.name);
+    }
+
+    protected virtual void RemoveEnemy(Collider collider)
+    {
+        foreach (EnemyCtrl enemyCtrl in this.enemies)
+        {
+            if (collider.transform.parent.name.Equals(enemyCtrl.name))
+            {
+                this.enemies.Remove(enemyCtrl);
+                return;
+            }
+        }
     }
 
 }
