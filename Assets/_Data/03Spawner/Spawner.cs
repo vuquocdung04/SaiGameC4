@@ -10,4 +10,8 @@ public abstract class Spawner : DungMonoBehaviour
         Transform newObj = Instantiate(prefab);
         return newObj;
     }
+    public virtual void Despawn(Transform prefab)
+    {
+        Destroy(prefab.gameObject);
+    }
 }

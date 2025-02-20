@@ -10,6 +10,9 @@ public class BulletSpawner : Spawner
     public virtual Bullet Spawn(Bullet bulletPrefab)
     {
         Bullet newObj = Instantiate(bulletPrefab);
+
+        // bullet sinh ra thi nho spawner cua no la ai
+        newObj.Despawn.SetSpawner(this);
         return newObj;
     }
     public virtual Bullet Spawn(Bullet bulletPrefab, Vector3 parentPos)
