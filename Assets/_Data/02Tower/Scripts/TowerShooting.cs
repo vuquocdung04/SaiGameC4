@@ -16,6 +16,9 @@ public class TowerShooting : TowerAbstract
     [SerializeField] protected float rotationSpeed = 2f;
     Vector3 directionToTarget;
     Vector3 newDirection;
+
+    // huong bay bullet
+    Vector3 rotatorDirection;
     private void Start()
     {
         InvokeRepeating(nameof(TargetNearestLoading), targetLoadingCountDown, targetLoadingCountDown);
@@ -53,10 +56,10 @@ public class TowerShooting : TowerAbstract
         //neu khong co target => khong ban
         if (this.enemyTarget == null) return;
 
-
-        //spawner
         FirePoint firePoint = this.GetFirePoint();
         Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
+        rotatorDirection = this.towerCtrl.Rotator.transform.forward;
+        newBullet.transform.forward = rotatorDirection;
 
         newBullet.gameObject.SetActive(true);
     }
