@@ -56,7 +56,9 @@ public class TowerTargeting : DungMonoBehaviour
     }
     #endregion
 
-
+    /// <summary>
+    /// Observer FindNearest
+    /// </summary>
     protected virtual void FindNearest()
     {
         nearestDistance = Mathf.Infinity;

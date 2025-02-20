@@ -88,6 +88,9 @@ public class EnemyMoving : DungMonoBehaviour
         }
     }
 
+    /// <summary>
+    /// TODO: Observer CheckMoving()
+    /// </summary>
     protected virtual void CheckMoving()
     {
         if(this.enemyCtrl.Agent.velocity.magnitude > 0.1f) this.isMoving = true;

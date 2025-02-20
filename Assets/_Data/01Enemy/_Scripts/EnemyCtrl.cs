@@ -12,6 +12,10 @@ public class EnemyCtrl : DungMonoBehaviour
     [SerializeField] protected Transform model;
     [SerializeField] protected Animator _animator;
     public Animator Animator => _animator;
+
+
+    [SerializeField] protected TowerTargetable towerTargetable;
+    public TowerTargetable TowerTargetable => towerTargetable;
     #region LoadComponents
     protected override void LoadComponents()
     {
@@ -19,6 +23,7 @@ public class EnemyCtrl : DungMonoBehaviour
         this.LoadNavMeshAgent();
         this.LoadModel();
         this.LoadAnimator();
+        this.LoadTowerTargetable();
     }
 
     protected virtual void LoadNavMeshAgent()
@@ -45,6 +50,14 @@ public class EnemyCtrl : DungMonoBehaviour
         this._animator = this.model.GetComponent<Animator>();
 
         Debug.LogWarning(transform.name + ": LoadAnimator", gameObject);
+    }
+
+    protected virtual void LoadTowerTargetable()
+    {
+        if (this.towerTargetable != null) return;
+        this.towerTargetable = GetComponentInChildren<TowerTargetable>();
+        this.towerTargetable.transform.localPosition = new Vector3(0,0.5f,0);
+        Debug.LogWarning(transform.name + ": LoadTowerTargetable", gameObject);
     }
 
     #endregion
