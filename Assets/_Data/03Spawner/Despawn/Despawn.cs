@@ -14,10 +14,11 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObj
     [Space(10)]
     [SerializeField] protected float timeLife = 7f;
     [SerializeField] protected float currentTime = 7f;
+    [SerializeField] protected bool isDespawnByTime = true;
 
     private void FixedUpdate()
     {
-        this.DespawnChecking();
+        this.DespawnByTime();
     }
 
     #region LoadComponents
@@ -44,8 +45,10 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObj
 
     #endregion
 
-    protected virtual void DespawnChecking()
+    protected virtual void DespawnByTime()
     {
+        if (!isDespawnByTime) return;
+
         this.currentTime -= Time.fixedDeltaTime;
         if (this.currentTime > 0) return;
 

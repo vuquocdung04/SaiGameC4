@@ -45,3 +45,5 @@ ___
 	- thằng con *BulletDamageSender*: kế thừa từ thằng *DamageSender*, còn việc biến mất khi va chạm thì tự khai báo
 	- 👉 *BulletDamageSender* mở rộng *DamageSender* mà không cần sửa code lớp cha
 	- 👉 *BulletDamageSender* có thể sử dụng thay thế *DamageSender* mà không làm thay đổi hành vi chương trình
+- E48:
+	- 🔖EnemySpawning: phần remove enemy khỏi list sau khi chết, note lại sau sửa vì không cần gọi trong fixedupdate

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public abstract class EnemyCtrl : PoolObj
 {
-    [Header("EnemyCtrl")]
+    [Header("Enemy Ctrl")]
     [SerializeField] protected NavMeshAgent agent;
     public NavMeshAgent Agent => agent;
 
@@ -16,6 +16,9 @@ public abstract class EnemyCtrl : PoolObj
 
     [SerializeField] protected TowerTargetable towerTargetable;
     public TowerTargetable TowerTargetable => towerTargetable;
+
+    [SerializeField] protected EnemyDamageReceiver enemyDamageReceiver;
+    public EnemyDamageReceiver EnemyDamageReceiver => enemyDamageReceiver;
     #region LoadComponents
     protected override void LoadComponents()
     {
@@ -24,6 +27,7 @@ public abstract class EnemyCtrl : PoolObj
         this.LoadModel();
         this.LoadAnimator();
         this.LoadTowerTargetable();
+        this.LoadEnemyDamageReceiver();
     }
 
     protected virtual void LoadNavMeshAgent()
@@ -59,6 +63,15 @@ public abstract class EnemyCtrl : PoolObj
         this.towerTargetable.transform.localPosition = new Vector3(0,0.5f,0);
         Debug.LogWarning(transform.name + ": LoadTowerTargetable", gameObject);
     }
+    protected virtual void LoadEnemyDamageReceiver()
+    {
+        if (this.enemyDamageReceiver != null) return;
+        this.enemyDamageReceiver = GetComponentInChildren<EnemyDamageReceiver>();
+        Debug.LogWarning(transform.name + ": LoadEnemyDamageReceiver", gameObject);
+    }
+
+
+
     #endregion
 
 }

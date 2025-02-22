@@ -223,6 +223,7 @@ MonoBehaviour:
   spawner: {fileID: 1965565008}
   timeLife: 7
   currentTime: 7
+  isDespawnByTime: 0
 --- !u!1001 &136407024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -794,7 +795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &532896493
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,6 +1504,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1965565007}
+  - {fileID: 1545791311}
   - {fileID: 607359845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1518,6 +1521,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e0bf06dca2b4145af50aebc65940d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 1965565008}
+  enemySpawning: {fileID: 1545791310}
+  enemyPrefabs: {fileID: 607359846}
 --- !u!1001 &861435012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2160,6 +2166,7 @@ MonoBehaviour:
   spawner: {fileID: 1965565008}
   timeLife: 7
   currentTime: 7
+  isDespawnByTime: 0
 --- !u!1 &1096325723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,7 +2184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096325724
 Transform:
   m_ObjectHideFlags: 0
@@ -2287,7 +2294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1154640090
 Transform:
   m_ObjectHideFlags: 0
@@ -2682,6 +2689,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93bf42002c6f2d145a7986576a6e5c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1545791309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545791311}
+  - component: {fileID: 1545791310}
+  m_Layer: 0
+  m_Name: EnemySpawning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1545791310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545791309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba392f72ea95d42b14f0d31d850a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyManager: {fileID: 848773412}
+  spawnSpeed: 1
+  maxSpawn: 10
+  spawnCtrls: []
+--- !u!4 &1545791311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545791309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 848773411}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1574590958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3119,6 +3174,7 @@ MonoBehaviour:
   spawner: {fileID: 1965565008}
   timeLife: 7
   currentTime: 7
+  isDespawnByTime: 0
 --- !u!1 &1850767284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e9243313d70ab6b47a29916fc6a3834c, type: 3}
@@ -3273,12 +3329,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965565006}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 848773411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1965565008
 MonoBehaviour:
@@ -3925,12 +3981,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 356144434699314453, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
       propertyPath: damage
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2492132402752312416, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1045301009}
+    - target: {fileID: 2492132402752312416, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
+      propertyPath: isDespawnByTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6518211453292973682, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
       propertyPath: m_Name
       value: Bullet
@@ -4341,7 +4401,6 @@ SceneRoots:
   - {fileID: 2033177170}
   - {fileID: 1657418270}
   - {fileID: 679598200}
-  - {fileID: 1965565007}
   - {fileID: 848773411}
   - {fileID: 1366016891}
   - {fileID: 846863759}

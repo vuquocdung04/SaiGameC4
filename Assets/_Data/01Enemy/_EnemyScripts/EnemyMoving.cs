@@ -15,8 +15,9 @@ public class EnemyMoving : DungMonoBehaviour
 
     [Header("Bool")]
 
+    //vd: sau co skill giu chan enemy thi no se khong di chuyen duoc
     [SerializeField] protected bool canMove = true;
-    // check xem di chuyen de doi anim
+    // anim
     [SerializeField] protected bool isMoving = true;
     // check toi diem cuoi
     [SerializeField] protected bool isFinish;
@@ -61,7 +62,13 @@ public class EnemyMoving : DungMonoBehaviour
     {
         if(!this.canMove)
         {
-            this.enemyCtrl.Agent.isStopped = false;
+            this.enemyCtrl.Agent.isStopped = true;
+            return;
+        }
+
+        if (this.enemyCtrl.EnemyDamageReceiver.IsDead())
+        {
+            this.enemyCtrl.Agent.isStopped = true;
             return;
         }
 
