@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6366bde7361e04d8401e1eb7c13185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 1154640091}
+  enemyCtrl: {fileID: 1154640094}
   pathName: path_1
   enemyPath: {fileID: 0}
   currentPoint: {fileID: 0}
@@ -175,6 +175,54 @@ MonoBehaviour:
   canMove: 1
   isMoving: 1
   isFinish: 0
+--- !u!1 &43263775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43263776}
+  - component: {fileID: 43263777}
+  m_Layer: 0
+  m_Name: Despawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &43263776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43263775}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 532896493}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43263777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43263775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11ff678b4542c44880606f1584e8f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 532896496}
+  spawner: {fileID: 1965565008}
+  timeLife: 7
+  currentTime: 7
 --- !u!1001 &136407024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,6 +812,7 @@ Transform:
   - {fileID: 796622519}
   - {fileID: 1670076994}
   - {fileID: 830362985}
+  - {fileID: 43263776}
   m_Father: {fileID: 607359845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &532896495
@@ -797,10 +846,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 532896492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff68febaa42c424b9064efafa1160dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2418a26133aa2d940a9802e72b43a534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnBase: {fileID: 0}
+  despawnBase: {fileID: 43263777}
   agent: {fileID: 532896495}
   model: {fileID: 913779126}
   _animator: {fileID: 1934689039}
@@ -814,6 +863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 607359845}
+  - component: {fileID: 607359846}
   m_Layer: 0
   m_Name: EnemyPrefabs
   m_TagString: Untagged
@@ -839,6 +889,23 @@ Transform:
   - {fileID: 532896493}
   m_Father: {fileID: 848773411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &607359846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607359844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da9f7c2c199a034983554953792a22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyManager: {fileID: 848773412}
+  enemyCtrls:
+  - {fileID: 1154640094}
+  - {fileID: 1096325727}
+  - {fileID: 532896496}
 --- !u!1 &637843352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,8 +1158,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719099744}
-  - component: {fileID: 719099746}
   - component: {fileID: 719099745}
+  - component: {fileID: 719099746}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -1132,7 +1199,7 @@ MonoBehaviour:
   isDead: 0
   isImmotal: 0
   capsuleCollider: {fileID: 719099746}
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 1154640094}
 --- !u!136 &719099746
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1285,8 +1352,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830362985}
-  - component: {fileID: 830362987}
   - component: {fileID: 830362986}
+  - component: {fileID: 830362987}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -1415,6 +1482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848773411}
+  - component: {fileID: 848773412}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -1435,10 +1503,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1965565007}
   - {fileID: 607359845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &848773412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848773410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e0bf06dca2b4145af50aebc65940d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &861435012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2033,6 +2112,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93bf42002c6f2d145a7986576a6e5c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1095882645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095882646}
+  - component: {fileID: 1095882647}
+  m_Layer: 0
+  m_Name: Despawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095882646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095882645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1154640090}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1095882647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095882645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11ff678b4542c44880606f1584e8f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1154640094}
+  spawner: {fileID: 1965565008}
+  timeLife: 7
+  currentTime: 7
 --- !u!1 &1096325723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,6 +2195,7 @@ Transform:
   - {fileID: 637843353}
   - {fileID: 783405410}
   - {fileID: 1673694283}
+  - {fileID: 1797306407}
   m_Father: {fileID: 607359845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1096325726
@@ -2101,10 +2229,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096325723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff68febaa42c424b9064efafa1160dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 23fd840b790566c4aa98b20a5858eb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnBase: {fileID: 0}
+  despawnBase: {fileID: 1797306408}
   agent: {fileID: 1096325726}
   model: {fileID: 640827741}
   _animator: {fileID: 1850767285}
@@ -2151,7 +2279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1154640090}
-  - component: {fileID: 1154640091}
+  - component: {fileID: 1154640094}
   - component: {fileID: 1154640093}
   m_Layer: 0
   m_Name: copzombie_l_actisdato
@@ -2177,25 +2305,9 @@ Transform:
   - {fileID: 18673938}
   - {fileID: 201451289}
   - {fileID: 719099744}
+  - {fileID: 1095882646}
   m_Father: {fileID: 607359845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1154640091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154640089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff68febaa42c424b9064efafa1160dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  despawnBase: {fileID: 0}
-  agent: {fileID: 1154640093}
-  model: {fileID: 362073208}
-  _animator: {fileID: 410711129}
-  towerTargetable: {fileID: 201451291}
 --- !u!195 &1154640093
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2218,6 +2330,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1154640094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154640089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d9395da53390344af796ac92cbbdb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnBase: {fileID: 1095882647}
+  agent: {fileID: 1154640093}
+  model: {fileID: 362073208}
+  _animator: {fileID: 410711129}
+  towerTargetable: {fileID: 201451291}
 --- !u!1001 &1185217415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2745,8 +2874,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1673694283}
-  - component: {fileID: 1673694285}
   - component: {fileID: 1673694284}
+  - component: {fileID: 1673694285}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -2786,7 +2915,7 @@ MonoBehaviour:
   isDead: 0
   isImmotal: 0
   capsuleCollider: {fileID: 1673694285}
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 1096325727}
 --- !u!136 &1673694285
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2942,6 +3071,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744491014025807251, guid: 201b1a3351ee6854ea4ca69ebefba968, type: 3}
   m_PrefabInstance: {fileID: 1756760686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1797306406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797306407}
+  - component: {fileID: 1797306408}
+  m_Layer: 0
+  m_Name: Despawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1797306407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797306406}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1096325724}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1797306408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797306406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11ff678b4542c44880606f1584e8f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1096325727}
+  spawner: {fileID: 1965565008}
+  timeLife: 7
+  currentTime: 7
 --- !u!1 &1850767284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e9243313d70ab6b47a29916fc6a3834c, type: 3}
@@ -3080,6 +3257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1965565007}
+  - component: {fileID: 1965565008}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -3100,8 +3278,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 848773411}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1965565008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965565006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb1b099ee109b845bc4160c5c9d725a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCount: 0
+  isPoolObjs: []
 --- !u!1001 &1985946805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4149,6 +4341,7 @@ SceneRoots:
   - {fileID: 2033177170}
   - {fileID: 1657418270}
   - {fileID: 679598200}
+  - {fileID: 1965565007}
   - {fileID: 848773411}
   - {fileID: 1366016891}
   - {fileID: 846863759}
