@@ -47,3 +47,4 @@ ___
 	- 👉 *BulletDamageSender* có thể sử dụng thay thế *DamageSender* mà không làm thay đổi hành vi chương trình
 - E48:
 	- 🔖EnemySpawning: phần remove enemy khỏi list sau khi chết, note lại sau sửa vì không cần gọi trong fixedupdate
+	- 🔖cái phần remove xác enemy khi đã chết khỏi list - note lại sau tối ưu

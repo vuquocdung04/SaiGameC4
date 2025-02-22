@@ -47,11 +47,18 @@ public class EnemyDamageReceiver : DamageReceiver
     {
         base.OnDead();
         this.enemyCtrl.Animator.SetBool(Const.ISDEAD,this.isDead);
+        this.capsuleCollider.enabled = false;
+        InvokeRepeating(nameof(this.DisAppear),3f,3f);
     }
 
     protected override void OnHit()
     {
         base.OnHit();
         this.enemyCtrl.Animator.SetTrigger(Const.ISHIT);
+    }
+
+    protected virtual void DisAppear()
+    {
+        this.enemyCtrl.DespawnBase.DoDespawn();
     }
 }

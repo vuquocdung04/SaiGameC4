@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCtrl: {fileID: 1154640094}
-  pathName: path_1
+  pathName: path_0
   enemyPath: {fileID: 0}
   currentPoint: {fileID: 0}
   pointDistance: Infinity
@@ -805,7 +805,7 @@ Transform:
   m_GameObject: {fileID: 532896492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.36, y: 0, z: 2.8099995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -855,6 +855,7 @@ MonoBehaviour:
   model: {fileID: 913779126}
   _animator: {fileID: 1934689039}
   towerTargetable: {fileID: 1670076996}
+  enemyDamageReceiver: {fileID: 830362986}
 --- !u!1 &607359844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,7 +2195,7 @@ Transform:
   m_GameObject: {fileID: 1096325723}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.71, y: 0, z: 2.8099995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2244,6 +2245,7 @@ MonoBehaviour:
   model: {fileID: 640827741}
   _animator: {fileID: 1850767285}
   towerTargetable: {fileID: 783405412}
+  enemyDamageReceiver: {fileID: 1673694284}
 --- !u!1 &1142893810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,7 +2306,7 @@ Transform:
   m_GameObject: {fileID: 1154640089}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.8099995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2354,6 +2356,7 @@ MonoBehaviour:
   model: {fileID: 362073208}
   _animator: {fileID: 410711129}
   towerTargetable: {fileID: 201451291}
+  enemyDamageReceiver: {fileID: 719099745}
 --- !u!1001 &1185217415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3851,6 +3854,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172394102513998277, guid: 277391fc6d421614db0648303cc1ef4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172394102513998277, guid: 277391fc6d421614db0648303cc1ef4d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
