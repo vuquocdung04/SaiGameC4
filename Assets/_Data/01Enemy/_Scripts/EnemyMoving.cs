@@ -96,7 +96,7 @@ public class EnemyMoving : DungMonoBehaviour
         if(this.enemyCtrl.Agent.velocity.magnitude > 0.1f) this.isMoving = true;
         else this.isMoving = false;
 
-        this.enemyCtrl.Animator.SetBool(Const.isMoving, isMoving);
+        this.enemyCtrl.Animator.SetBool(Const.ISMOVING, isMoving);
     }
 
 }

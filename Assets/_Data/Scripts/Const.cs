@@ -3,8 +3,9 @@
 public static class Const 
 {
     #region Bool animation
-    public const string isMoving = "isMoving";
-
+    public const string ISMOVING = "isMoving";
+    public const string ISDEAD = "isDead";
+    public const string ISHIT = "isHit";
     #endregion
 
     #region Targetable

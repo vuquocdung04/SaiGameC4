@@ -1065,6 +1065,7 @@ MonoBehaviour:
   currentHP: 10
   isDead: 0
   capsuleCollider: {fileID: 719099746}
+  enemyCtrl: {fileID: 0}
 --- !u!136 &719099746
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1084,7 +1085,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -1257,6 +1258,7 @@ MonoBehaviour:
   currentHP: 10
   isDead: 0
   capsuleCollider: {fileID: 830362987}
+  enemyCtrl: {fileID: 532896496}
 --- !u!136 &830362987
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1276,7 +1278,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -2683,6 +2685,7 @@ MonoBehaviour:
   currentHP: 10
   isDead: 0
   capsuleCollider: {fileID: 1673694285}
+  enemyCtrl: {fileID: 0}
 --- !u!136 &1673694285
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2702,7 +2705,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -3596,6 +3599,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846863759}
     m_Modifications:
+    - target: {fileID: 356144434699314453, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2492132402752312416, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
       propertyPath: spawner
       value: 
@@ -3606,11 +3613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6518211453292973682, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727388295540569599, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
-      propertyPath: m_Radius
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7101311385490300638, guid: fbfcb51ca6a167e4db758038071fdfbd, type: 3}
       propertyPath: m_LocalPosition.x

@@ -11,11 +11,15 @@ public class EnemyDamageReceiver : DamageReceiver
     [SerializeField] protected CapsuleCollider capsuleCollider;
     public CapsuleCollider CapsuleCollider => capsuleCollider;
 
+    [SerializeField] protected EnemyCtrl enemyCtrl;
+    public EnemyCtrl EnemyCtrl => enemyCtrl;
+
     #region LoadComponents
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCapsuleCollider();
+        this.LoadEnemyCtrl();
     }
     protected virtual void LoadCapsuleCollider()
     {
@@ -28,6 +32,26 @@ public class EnemyDamageReceiver : DamageReceiver
         Debug.LogWarning(transform.name + ": LoadCapsuleCollider", gameObject);
 
     }
+    protected virtual void LoadEnemyCtrl()
+    {
+        if (this.enemyCtrl != null) return;
+        this.enemyCtrl = GetComponentInParent<EnemyCtrl>();
+        Debug.LogWarning(transform.name + ": LoadEnemyCtrl", gameObject);
+
+    }
+
 
     #endregion
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        this.enemyCtrl.Animator.SetBool(Const.ISDEAD,this.isDead);
+    }
+
+    protected override void OnHit()
+    {
+        base.OnHit();
+        this.enemyCtrl.Animator.SetTrigger(Const.ISHIT);
+    }
 }
