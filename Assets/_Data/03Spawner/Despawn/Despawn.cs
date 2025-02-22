@@ -49,13 +49,15 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObj
         this.currentTime -= Time.fixedDeltaTime;
         if (this.currentTime > 0) return;
 
-        this.spawner.Despawn(this.parent);
+        this.DoDespawn();
         this.currentTime = this.timeLife;
 
     }
-    public virtual void SetSpawner( Spawner<T> spawner)
+
+    public override void DoDespawn()
     {
-        this.spawner = spawner;
+        this.spawner.Despawn(this.parent);
+
     }
 
 }

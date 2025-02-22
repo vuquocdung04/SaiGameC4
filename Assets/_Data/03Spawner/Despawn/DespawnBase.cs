@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract  class DespawnBase : DungMonoBehaviour
 {
-    
+    public abstract void DoDespawn();
 
 }

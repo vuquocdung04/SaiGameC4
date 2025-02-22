@@ -40,5 +40,8 @@ ___
 	- cơ chế hoạt động giống như observer, nhưng thay vì gọi như observer thì tạo hàm public gọi trực tiếp
 	- Một cách làm khác ngoài cách interface 
 
-
-
+- E44: Open/Closed Principle (chữ O trong solid) và Liskov Substitution Principle(chữ L trong solid)
+	- thằng *DamageSender*: chỉ chịu trách nhiệm gửi damage
+	- thằng con *BulletDamageSender*: kế thừa từ thằng *DamageSender*, còn việc biến mất khi va chạm thì tự khai báo
+	- 👉 *BulletDamageSender* mở rộng *DamageSender* mà không cần sửa code lớp cha
+	- 👉 *BulletDamageSender* có thể sử dụng thay thế *DamageSender* mà không làm thay đổi hành vi chương trình

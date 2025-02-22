@@ -10,11 +10,16 @@ public class BulletDamageSender : DamageSender
     [SerializeField] protected SphereCollider sphereCollider;
     public SphereCollider SphereCollider => sphereCollider;
 
+    [SerializeField] protected BulletCtrl bulletCtrl;
+    public BulletCtrl BulletCtrl => bulletCtrl;
+
+
     #region LoadComponents
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadSphereCollider();
+        this.LoadBulletCtrl();
     }
     protected virtual void LoadSphereCollider()
     {
@@ -25,6 +30,20 @@ public class BulletDamageSender : DamageSender
         Debug.LogWarning(transform.name + ": LoadSphereCollider", gameObject);
 
     }
+    protected virtual void LoadBulletCtrl()
+    {
+        if (this.bulletCtrl != null) return;
+        this.bulletCtrl = GetComponentInParent<BulletCtrl>();
+        Debug.LogWarning(transform.name + ": LoadBulletCtrl", gameObject);
+
+    }
 
     #endregion
+
+    protected override void Send(DamageReceiver damageReceiever)
+    {
+        base.Send(damageReceiever);
+        this.bulletCtrl.Bullet.DespawnBase.DoDespawn();
+        //this.despawn
+    }
 }
