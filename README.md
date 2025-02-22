@@ -34,8 +34,11 @@ ___
 	- 👉 từ đó: vật thể nào mang **collider** va chạm với nó có thể sẽ thành con của nó =))
 		- và tất nhiên nó sẽ đi theo vật thể luôn
 	- [🔗**Link bugg**](https://youtu.be/07MBMTH6MPU).
-## 🌅Ngày 20/2: E40 ->
+## 🌅Ngày 22/2: E40 ->
 - Generic class cơ bản
+- E43: truyền nhận damage
+	- cơ chế hoạt động giống như observer, nhưng thay vì gọi như observer thì tạo hàm public gọi trực tiếp
+	- Một cách làm khác ngoài cách interface 
 
 
 
