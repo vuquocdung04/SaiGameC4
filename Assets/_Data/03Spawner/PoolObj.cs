@@ -8,6 +8,7 @@ public abstract  class PoolObj : DungMonoBehaviour
     [SerializeField] protected DespawnBase despawnBase;
     public DespawnBase DespawnBase => despawnBase;
 
+    public abstract string GetName();
 
     protected override void LoadComponents()
     {

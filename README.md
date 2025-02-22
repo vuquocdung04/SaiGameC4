@@ -12,7 +12,7 @@ ___
 - Material cơ bản
 - Setup đường đi enemy
 - Navmesh cơ bản
-## 🌅Ngày 20/2: E29 ->
+## 🌅Ngày 20/2: E29 -> E39
 - E29:
 	- 🔖CheckMoving: sau dùng observer thay cho fixedupdate
 	- 🔖E32: tìm quái gần nhất, sau dùng observer
@@ -34,7 +34,8 @@ ___
 	- 👉 từ đó: vật thể nào mang **collider** va chạm với nó có thể sẽ thành con của nó =))
 		- và tất nhiên nó sẽ đi theo vật thể luôn
 	- [🔗**Link bugg**](https://youtu.be/07MBMTH6MPU).
-
+## 🌅Ngày 20/2: E40 ->
+- Generic class cơ bản
 
 
 

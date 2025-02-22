@@ -8,6 +8,12 @@ public class Bullet : PoolObj
 {
 
     [SerializeField] protected float speed = 10f;
+
+    public override string GetName()
+    {
+        return "Bullet";
+    }
+
     private void Update()
     {
         transform.Translate(speed * Time.deltaTime * Vector3.forward);
