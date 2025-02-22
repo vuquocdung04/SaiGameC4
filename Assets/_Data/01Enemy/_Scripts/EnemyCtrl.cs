@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyCtrl : DungMonoBehaviour
+public abstract class EnemyCtrl : PoolObj
 {
     [Header("EnemyCtrl")]
     [SerializeField] protected NavMeshAgent agent;
@@ -59,6 +59,6 @@ public class EnemyCtrl : DungMonoBehaviour
         this.towerTargetable.transform.localPosition = new Vector3(0,0.5f,0);
         Debug.LogWarning(transform.name + ": LoadTowerTargetable", gameObject);
     }
-
     #endregion
+
 }
