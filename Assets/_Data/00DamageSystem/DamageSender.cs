@@ -18,7 +18,7 @@ public class DamageSender : DungMonoBehaviour
         if (damageReceiver == null) return;
         this.Send(damageReceiver);
 
-        Debug.LogError("check");
+        //Debug.LogError("check");
     }
     #region LoadComponents
     protected override void LoadComponents()

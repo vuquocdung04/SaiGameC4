@@ -35,7 +35,7 @@ public class EnemySpawning : EnemyManagerAbstract
 
 
         this.spawnCtrls.Add(newEnemy);
-        Debug.LogError("Spawnnnnn");
+        //Debug.LogError("Spawnnnnn");
     }
 
     //Remode khoi list khi enemy da chet
