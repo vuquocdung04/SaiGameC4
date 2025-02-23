@@ -34,6 +34,10 @@ public class EnemyMoving : DungMonoBehaviour
         this.CheckMoving();
     }
 
+    protected virtual void OnEnable()
+    {
+        this.OnReborn();
+    }
 
     #region LoadComponents
     protected override void LoadComponents()
@@ -104,6 +108,11 @@ public class EnemyMoving : DungMonoBehaviour
         else this.isMoving = false;
 
         this.enemyCtrl.Animator.SetBool(Const.ISMOVING, isMoving);
+    }
+
+    protected virtual void OnReborn()
+    {
+        this.isFinish = false;
     }
 
 }

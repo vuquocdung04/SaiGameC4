@@ -34,7 +34,7 @@ ___
 	- 👉 từ đó: vật thể nào mang **collider** va chạm với nó có thể sẽ thành con của nó =))
 		- và tất nhiên nó sẽ đi theo vật thể luôn
 	- [🔗**Link bugg**](https://youtu.be/07MBMTH6MPU).
-## 🌅Ngày 22/2: E40 ->
+## 🌅Ngày 22/2: E40 -> E49
 - Generic class cơ bản
 - E43: truyền nhận damage
 	- cơ chế hoạt động giống như observer, nhưng thay vì gọi như observer thì tạo hàm public gọi trực tiếp
@@ -48,3 +48,5 @@ ___
 - E48:
 	- 🔖EnemySpawning: phần remove enemy khỏi list sau khi chết, note lại sau sửa vì không cần gọi trong fixedupdate
 	- 🔖cái phần remove xác enemy khi đã chết khỏi list - note lại sau tối ưu
+## 🌅Ngày 23/2: E50 ->
+

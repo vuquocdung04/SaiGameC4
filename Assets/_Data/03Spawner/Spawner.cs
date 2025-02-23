@@ -6,7 +6,28 @@ public abstract class Spawner<T> : DungMonoBehaviour where T : PoolObj
 {
     [Header("Spawner<T>")]
     [SerializeField] protected int spawnCount = 0;
+    [SerializeField] protected PoolHolder poolHolder;
     [SerializeField] protected List<T> isPoolObjs;
+
+
+    #region LoadComponents
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadPoolHolder();
+    }
+
+    protected virtual void LoadPoolHolder()
+    {
+        if (this.poolHolder != null) return;
+        this.poolHolder = GetComponentInChildren<PoolHolder>();
+        Debug.LogWarning(transform.name + ": LoadPoolHolder", gameObject);
+    }
+
+    #endregion
+
+
+
     public virtual Transform Spawn(Transform prefab)
     {
         Transform newObj = Instantiate(prefab);
@@ -21,6 +42,11 @@ public abstract class Spawner<T> : DungMonoBehaviour where T : PoolObj
             newObj = Instantiate(prefab);
             this.spawnCount++;
             UpdateName(prefab.transform, newObj.transform);
+        }
+
+        if(this.poolHolder != null)
+        {
+            newObj.transform.parent = this.poolHolder.transform;
         }
 
 

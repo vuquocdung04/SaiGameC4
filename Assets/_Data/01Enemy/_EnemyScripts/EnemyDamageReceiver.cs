@@ -61,4 +61,11 @@ public class EnemyDamageReceiver : DamageReceiver
     {
         this.enemyCtrl.DespawnBase.DoDespawn();
     }
+
+    protected override void OnReborn()
+    {
+        base.OnReborn();
+        this.capsuleCollider.enabled = true;
+    }
+
 }

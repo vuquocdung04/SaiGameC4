@@ -11,6 +11,11 @@ public class DamageReceiver : DungMonoBehaviour
     // bat tu
     [SerializeField] protected bool isImmotal = false;
 
+    protected virtual void OnEnable()
+    {
+        this.OnReborn();
+    }
+
     public virtual int Deduct(int hp)
     {
         if (!this.isImmotal)
@@ -37,5 +42,11 @@ public class DamageReceiver : DungMonoBehaviour
     protected virtual void OnHit()
     {
         //TODO: for override
+    }
+
+    //reset thong so sau khi chet
+    protected virtual void OnReborn()
+    {
+        this.currentHP = this.maxHp;
     }
 }
