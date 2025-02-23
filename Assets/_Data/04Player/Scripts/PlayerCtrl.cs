@@ -2,6 +2,7 @@ using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerCtrl : DungMonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerCtrl : DungMonoBehaviour
     [SerializeField] protected vThirdPersonCamera vThirdPersonCamera;
     public vThirdPersonCamera VThirdPersonCamera => vThirdPersonCamera;
 
+    [SerializeField] protected Rig rig;
+    public Rig Rig => rig;
+
     #region LoadComponents
     protected override void LoadComponents()
     {
@@ -26,6 +30,7 @@ public class PlayerCtrl : DungMonoBehaviour
         this.LoadThirdInput();
         this.LoadThirdCamera();
         this.LoadCrossHair();
+        this.LoadRig();
     }
 
     protected virtual void LoadThirdCtrl()
@@ -57,7 +62,13 @@ public class PlayerCtrl : DungMonoBehaviour
 
         Debug.LogWarning(transform.name + ": LoadThirdCamera", gameObject);
     }
+    protected virtual void LoadRig()
+    {
+        if (this.rig != null) return;
+        this.rig = transform.Find("Model").Find("AimingRig").GetComponent<Rig>();
 
+        Debug.LogWarning(transform.name + ": LoadRig", gameObject);
+    }
 
     #endregion
 }
