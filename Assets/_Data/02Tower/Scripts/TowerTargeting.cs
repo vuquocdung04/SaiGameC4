@@ -1,8 +1,6 @@
-using System.Collections;
+    
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
@@ -52,7 +50,7 @@ public class TowerTargeting : DungMonoBehaviour
         if (this._sphereCollider != null) return;
         this._sphereCollider = GetComponent<SphereCollider>();
         this._sphereCollider.isTrigger = true;
-        this._sphereCollider.radius = 7;
+        this._sphereCollider.radius = 15;
 
         Debug.LogWarning(transform.name + ": LoadSphereCollider", gameObject);
     }
@@ -71,10 +69,10 @@ public class TowerTargeting : DungMonoBehaviour
     /// </summary>
     protected virtual void FindNearest()
     {
-        nearestDistance = Mathf.Infinity;
+        nearestDistance = Mathf.Infinity;   
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
-            if (!this.CanSeeTarget(enemyCtrl)) continue;
+            if(!this.CanSeeTarget(enemyCtrl)) continue;
 
             enemyDistance = Vector3.Distance(transform.position, enemyCtrl.transform.position);
             if(enemyDistance < nearestDistance)
@@ -82,7 +80,7 @@ public class TowerTargeting : DungMonoBehaviour
                 nearestDistance = enemyDistance;
                 this.nearestEnemy = enemyCtrl;
             }
-        }
+        }   
     }
 
     // raycast tim enemy
@@ -106,13 +104,12 @@ public class TowerTargeting : DungMonoBehaviour
     protected virtual void AddEnemy(Collider collider)
     {
         if (collider.name != Const.TOWER_TARGETABLE) return;
-        EnemyCtrl enemyCtrl = collider.GetComponentInParent<EnemyCtrl>();
+        EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
 
         // neu enemy chet roi thi return
         if (enemyCtrl.EnemyDamageReceiver.IsDead()) return;
 
         this.enemies.Add(enemyCtrl);
-        Debug.Log("AddEnemy: " + collider.name);
     }
 
     // remove nay remove enemy khi da ra khoi vung tan cong
@@ -121,7 +118,7 @@ public class TowerTargeting : DungMonoBehaviour
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
             // neu enemy == enemyda add trong list ma ra khoi vung => tien hanh remove
-            if (collider.transform.parent == enemyCtrl.transform)
+            if (collider.transform.parent.name == enemyCtrl.name)
             {
                 if(enemyCtrl == this.nearestEnemy) this.nearestEnemy = null;
 

@@ -48,7 +48,7 @@ public class EnemyDamageReceiver : DamageReceiver
         base.OnDead();
         this.enemyCtrl.Animator.SetBool(Const.ISDEAD,this.isDead);
         this.capsuleCollider.enabled = false;
-        InvokeRepeating(nameof(this.DisAppear),3f,3f);
+        Invoke(nameof(this.DisAppear),3f);
     }
 
     protected override void OnHit()

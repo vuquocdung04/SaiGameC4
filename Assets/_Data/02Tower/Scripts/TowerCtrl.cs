@@ -50,6 +50,7 @@ public class TowerCtrl : DungMonoBehaviour
     {
         if (this.towerTargeting != null) return;
         this.towerTargeting = GetComponentInChildren<TowerTargeting>();
+        this.towerTargeting.transform.localPosition = new Vector3(0,0.5f,0);
         Debug.LogWarning(transform.name + ": LoadTowerTargeting", gameObject);
     }
 

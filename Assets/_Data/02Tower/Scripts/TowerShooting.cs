@@ -22,6 +22,8 @@ public class TowerShooting : TowerAbstract
     private void Start()
     {
         InvokeRepeating(nameof(TargetNearestLoading), targetLoadingCountDown, targetLoadingCountDown);
+        //Invoke(nameof(TargetNearestLoading), targetLoadingCountDown);
+        //Invoke(nameof(Shooting), shootCountDown);
         InvokeRepeating(nameof(this.Shooting),shootCountDown,shootCountDown);
     }
     private void FixedUpdate()
@@ -33,6 +35,7 @@ public class TowerShooting : TowerAbstract
     protected virtual void TargetNearestLoading()
     {
         this.enemyTarget = this.towerCtrl.TowerTargeting.NearestEnemy;
+
     }
     // nhin ve huong target
     protected virtual void LookingAtTarget()
@@ -63,6 +66,8 @@ public class TowerShooting : TowerAbstract
         newBullet.transform.forward = rotatorDirection;
 
         newBullet.gameObject.SetActive(true);
+
+
     }
     protected virtual FirePoint GetFirePoint()
     {

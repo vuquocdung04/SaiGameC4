@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageReceiver : DungMonoBehaviour
+public abstract class DamageReceiver : DungMonoBehaviour
 {
     [Header("DamageReceiever")]
     [SerializeField] protected int maxHp = 10;

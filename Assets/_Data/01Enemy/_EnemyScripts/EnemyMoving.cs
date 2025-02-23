@@ -18,9 +18,9 @@ public class EnemyMoving : DungMonoBehaviour
     //vd: sau co skill giu chan enemy thi no se khong di chuyen duoc
     [SerializeField] protected bool canMove = true;
     // anim
-    [SerializeField] protected bool isMoving = true;
+    [SerializeField] protected bool isMoving = false;
     // check toi diem cuoi
-    [SerializeField] protected bool isFinish;
+    [SerializeField] protected bool isFinish = false;
     //[SerializeField] protected int pathIndex = 0;
 
     private void Start()
