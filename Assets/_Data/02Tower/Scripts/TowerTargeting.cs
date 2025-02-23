@@ -71,12 +71,6 @@ public class TowerTargeting : DungMonoBehaviour
     /// </summary>
     protected virtual void FindNearest()
     {
-        if (this.enemies.Count == 0)
-        {
-            this.nearestEnemy = null;
-            return;
-        }
-
         nearestDistance = Mathf.Infinity;
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
@@ -129,6 +123,8 @@ public class TowerTargeting : DungMonoBehaviour
             // neu enemy == enemyda add trong list ma ra khoi vung => tien hanh remove
             if (collider.transform.parent == enemyCtrl.transform)
             {
+                if(enemyCtrl == this.nearestEnemy) this.nearestEnemy = null;
+
                 this.enemies.Remove(enemyCtrl);
                 return;
             }
@@ -141,6 +137,8 @@ public class TowerTargeting : DungMonoBehaviour
         {
             if(enemyCtrl.EnemyDamageReceiver.IsDead())
             {
+                if (enemyCtrl == this.nearestEnemy) this.nearestEnemy = null;
+
                 this.enemies.Remove(enemyCtrl);
                 return;
             }

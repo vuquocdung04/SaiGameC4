@@ -113,6 +113,7 @@ public class EnemyMoving : DungMonoBehaviour
     protected virtual void OnReborn()
     {
         this.isFinish = false;
+        this.currentPoint = null;
     }
 
 }

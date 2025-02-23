@@ -114,7 +114,7 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   currentFirePoint: 0
   targetLoadingCountDown: 1
-  shootCountDown: 1
+  shootCountDown: 0.3
   rotationSpeed: 2
 --- !u!1 &5558761851446620682
 GameObject:
