@@ -15,8 +15,13 @@ public class TowerCtrl : DungMonoBehaviour
     [SerializeField] protected BulletSpawner bulletSpawner;
     public BulletSpawner BulletSpawner => bulletSpawner;
 
+    protected string bulletName = "Bullet";
     [SerializeField] protected Bullet bullet;
     public Bullet Bullet => bullet;
+
+    [SerializeField] protected BulletPrefabs bulletPrefabs;
+    public BulletPrefabs BulletPrefabs => bulletPrefabs;
+
 
     [SerializeField] protected List<FirePoint> firePoints = new();
     public List<FirePoint> FirePoints => firePoints;
@@ -29,8 +34,8 @@ public class TowerCtrl : DungMonoBehaviour
         this.LoadModel();
         this.LoadTowerTargeting();
         this.LoadBulletSpawner();
-        this.LoadBullet();
         this.LoadFirePoints();
+        this.LoadBulletPrefabs();
     }
 
     protected virtual void LoadModel()
@@ -58,11 +63,20 @@ public class TowerCtrl : DungMonoBehaviour
     protected virtual void LoadBullet()
     {
         if (this.bullet != null) return;
-        this.bullet = GetComponentInChildren<Bullet>();
+        this.bullet = this.bulletPrefabs.GetByName(this.bulletName);
 
         this.HidePrefab();
         Debug.LogWarning(transform.name + ": LoadBullet", gameObject);
     }
+    protected virtual void LoadBulletPrefabs()
+    {
+        if (this.bulletPrefabs != null) return;
+        this.bulletPrefabs = GameObject.FindObjectOfType<BulletPrefabs>();
+        Debug.LogWarning(transform.name + ": LoadBullet", gameObject);
+
+        this.LoadBullet();
+    }
+
     protected virtual void LoadFirePoints()
     {
         if (this.firePoints.Count > 0) return;
