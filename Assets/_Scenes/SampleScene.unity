@@ -2793,7 +2793,7 @@ Animator:
   m_GameObject: {fileID: 1180786397}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3f467973d5feaed47b3d1a5b02ff1acf, type: 3}
-  m_Controller: {fileID: 9100000, guid: cbd1db45c75e5b948a5befe9ecb80421, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8d4d8fdaef26a044693e4ea47c789cd5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -5901,7 +5901,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   lockCamera: 0
-  rightOffset: 0.5
+  rightOffset: 0.6
   defaultDistance: 2
   height: 2
   smoothFollow: 10
