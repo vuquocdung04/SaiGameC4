@@ -22,6 +22,7 @@ public class PlayerCtrl : DungMonoBehaviour
     [SerializeField] protected Rig rig;
     public Rig Rig => rig;
 
+
     #region LoadComponents
     protected override void LoadComponents()
     {

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerAiming : PlayerAbstract
 {
+    [Header("Player Aiming")]
+    [SerializeField] protected bool isAlwaysAiming = false;
     protected float closeLookDistance = 1f;
     protected float farLookDistance = 2.5f;
 
@@ -32,6 +34,7 @@ public class PlayerAiming : PlayerAbstract
         this.playerCtrl.VThirdPersonController.isSprinting = false;
 
         this.playerCtrl.Rig.weight = 1;
+
     }
 
     protected virtual void LookFar()
