@@ -48,5 +48,6 @@ ___
 - E48:
 	- 🔖EnemySpawning: phần remove enemy khỏi list sau khi chết, note lại sau sửa vì không cần gọi trong fixedupdate
 	- 🔖cái phần remove xác enemy khi đã chết khỏi list - note lại sau tối ưu
-## 🌅Ngày 23/2: E50 ->
-
+## 🌅Ngày 23/2: E50 -> E57
+- Cái lỗi raycast ở tower mãi k biết sửa kiễu gì ?:D??
+## 🌅Ngày 24/2: E58
