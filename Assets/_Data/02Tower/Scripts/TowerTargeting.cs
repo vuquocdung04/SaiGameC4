@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,12 +9,14 @@ using UnityEngine.AI;
 
 public class TowerTargeting : DungMonoBehaviour
 {
+    [Header("Tower Targeting")]
     [SerializeField] protected Rigidbody _rigidbody;
     [SerializeField] protected SphereCollider _sphereCollider;
     //tim enemy gan nhat de ban
     [SerializeField] protected EnemyCtrl nearestEnemy;
     public EnemyCtrl NearestEnemy => nearestEnemy;
     [SerializeField] protected List<EnemyCtrl> enemies = new();
+    [SerializeField] protected LayerMask obstacleLayerMask;
     float nearestDistance;
     float enemyDistance;
 
@@ -77,6 +80,8 @@ public class TowerTargeting : DungMonoBehaviour
         nearestDistance = Mathf.Infinity;
         foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
+            if (!this.CanSeeTarget(enemyCtrl)) continue;
+
             enemyDistance = Vector3.Distance(transform.position, enemyCtrl.transform.position);
             if(enemyDistance < nearestDistance)
             {
@@ -84,6 +89,24 @@ public class TowerTargeting : DungMonoBehaviour
                 this.nearestEnemy = enemyCtrl;
             }
         }
+    }
+
+    // raycast tim enemy
+    protected virtual bool CanSeeTarget(EnemyCtrl target)
+    {
+        Vector3 directionToTarget = target.transform.position - transform.position;
+        float distanceToTarget = directionToTarget.magnitude;
+
+        if(Physics.Raycast(transform.position, directionToTarget, out RaycastHit hitInfo, distanceToTarget, obstacleLayerMask))
+        {
+            Vector3 directionToCollider = hitInfo.point - transform.position;
+            float distanceToCollider = directionToCollider.magnitude;
+            Debug.DrawRay(transform.position, directionToCollider.normalized * distanceToCollider, Color.red);
+            return false;
+        }
+
+        Debug.DrawRay(transform.position, directionToTarget.normalized * distanceToTarget, Color.green);
+        return true;
     }
 
     protected virtual void AddEnemy(Collider collider)

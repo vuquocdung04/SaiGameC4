@@ -434,6 +434,9 @@ MonoBehaviour:
   _sphereCollider: {fileID: 7746146597033015800}
   nearestEnemy: {fileID: 0}
   enemies: []
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!54 &416495505839075188
 Rigidbody:
   m_ObjectHideFlags: 0
