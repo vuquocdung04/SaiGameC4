@@ -50,4 +50,7 @@ ___
 	- 🔖cái phần remove xác enemy khi đã chết khỏi list - note lại sau tối ưu
 ## 🌅Ngày 23/2: E50 -> E57
 - Cái lỗi raycast ở tower mãi k biết sửa kiễu gì ?:D??
-## 🌅Ngày 24/2: E58
+## 🌅Ngày 24/2: E58 -> E60
+- Rig animation cơ bản:
+- Thuộc tính weight để xem IK có được chỉnh sửa hay không
+

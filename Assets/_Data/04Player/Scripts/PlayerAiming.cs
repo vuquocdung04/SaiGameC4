@@ -21,7 +21,9 @@ public class PlayerAiming : PlayerAbstract
 
     protected virtual void Aiming()
     {
-        if (InputManager.Instance.IsRightClick()) this.LookClose();
+
+
+        if ( this.isAlwaysAiming || InputManager.Instance.IsRightClick()) this.LookClose();
         else this.LookFar();
     }
 
@@ -41,5 +43,6 @@ public class PlayerAiming : PlayerAbstract
     {
         this.playerCtrl.VThirdPersonCamera.defaultDistance = this.farLookDistance;
         this.playerCtrl.Rig.weight = 0;
+
     }
 }
