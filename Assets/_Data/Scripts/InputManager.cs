@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
-    protected bool isRightClick = false;
-    protected bool isLeftClick = false;
+    protected bool isAiming = false;
+    protected bool isAttackLight = false;
 
     private void Update()
     {
-        this.CheckRightClick();
+        this.CheckAiming();
+        this.CheckAttackLight();
     }
 
-    protected virtual void CheckRightClick()
+    protected virtual void CheckAttackLight()
     {
-        this.isLeftClick = Input.GetMouseButton(0);
-        this.isRightClick = Input.GetMouseButton(1);
+        this.isAttackLight = Input.GetMouseButtonUp(0);
+    }
+    protected virtual void CheckAiming()
+    {
+        this.isAiming = Input.GetMouseButton(1);
     }
 
-    public virtual bool IsRightClick()
+    public virtual bool IsAiming()
     {
-        return this.isRightClick;
+        return this.isAiming;
     }
 
-    public virtual bool IsLeftClick()
+    public virtual bool IsAttackLight()
     {
-        return this.isLeftClick;
+        return this.isAttackLight;
     }
 }
