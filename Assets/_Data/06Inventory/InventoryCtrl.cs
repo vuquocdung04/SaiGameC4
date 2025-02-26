@@ -4,12 +4,29 @@ using UnityEngine;
 
 public abstract class InventoryCtrl : DungMonoBehaviour
 {
-    protected List<ItemInventory> items = new();
+    [SerializeField] protected List<ItemInventory> items = new();
 
     public abstract InventoryCodeName GetName();
 
     public virtual void AddItem(ItemInventory itemInventory)
     {
-        this.items.Add(itemInventory);
+        ItemInventory itemExit = this.FindItem(itemInventory.itemProfile.itemCode);
+
+        if(!itemInventory.itemProfile.isStackable || itemExit == null)
+        {
+            this.items.Add(itemInventory);
+            return;
+        }
+
+        itemExit.itemCount += itemInventory.itemCount;
+    }
+
+    public virtual ItemInventory FindItem(ItemCode itemCode)
+    {
+        foreach (var itemInventory in this.items)
+        {
+            if(itemInventory.itemProfile.itemCode == itemCode) return itemInventory;
+        }
+        return null;
     }
 }
