@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire1Ctrl : EffectFlyAbstract
+public class Fire2Ctrl : EffectFlyAbstract
 {
     public override string GetName()
     {
-        return "Fire1";
+        return "Fire2";
     }
 }

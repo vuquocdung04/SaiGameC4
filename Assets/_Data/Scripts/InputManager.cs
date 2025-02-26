@@ -48,4 +48,8 @@ public class InputManager : Singleton<InputManager>
     {
         return this.isAttackLight;
     }
+    public virtual bool IsAttackHeavy()
+    {
+        return this.isAttackHeavy;
+    }
 }
