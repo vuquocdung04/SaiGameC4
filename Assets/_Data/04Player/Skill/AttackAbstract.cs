@@ -10,9 +10,10 @@ public abstract class AttackAbstract : DungMonoBehaviour
     [SerializeField] protected EffectPrefabs prefabs;
     public PlayerCtrl PlayerCtrl => playerCtrl;
 
-    protected void Update()
+    private void LateUpdate()
     {
         this.Attacking();
+
     }
 
     protected override void LoadComponents()

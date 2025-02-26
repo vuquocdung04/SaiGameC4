@@ -48,7 +48,9 @@ public class EnemyDamageReceiver : DamageReceiver
         base.OnDead();
         this.enemyCtrl.Animator.SetBool(Const.ISDEAD,this.isDead);
         this.capsuleCollider.enabled = false;
-        Invoke(nameof(this.DisAppear),3f);
+
+        this.DropOnDead();
+        Invoke(nameof(this.DisAppear),5f);
     }
 
     protected override void OnHit()
@@ -68,4 +70,15 @@ public class EnemyDamageReceiver : DamageReceiver
         this.capsuleCollider.enabled = true;
     }
 
+    //roi do khi chet
+    protected virtual void DropOnDead()
+    {
+        ItemInventory item = new();
+        item.itemProfile = InventoryManager.Instance.GetProfileByCode(ItemCode.Gold);
+        item.itemCount = 1;
+        // drop thi add item roi vao day
+        // Monies() == tuong duong voi InventoryCtrl ctrl = this.GetByName(InventoryCodeName.Monies);
+        InventoryManager.Instance.Monies().AddItem(item);
+        ObserverManager.Notify(Const.TextGoldCount);
+    }
 }

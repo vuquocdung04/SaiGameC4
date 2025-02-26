@@ -12,4 +12,9 @@ public static class Const
     public const string TOWER_TARGETABLE = "TowerTargetable";
     #endregion
 
+
+    #region Observer
+    public const string TextGoldCount = "TextGoldCount";
+
+    #endregion
 }

@@ -56,6 +56,12 @@ ___
 ## 🌅Ngày 25/2: E59 ->E60:
 - ở script: PlayerAiming có hàm RotateToPosition thì tắt cái Rotation On Camera ở VThirdPersonController đi
 ## 🌅Ngày 26/2: E61 ->:
+- Trong game, player bắn: đạn bay theo hướng crossHair(playerShoot)
+	- 🛠Nhưng xảy ra 1 lỗi đó là: có 1 vị trí mà nó bay ra 2 đường đạn? tại sao?
+		- CrossHair: lấy vị trí chuột, cập nhật bằng Update()
+		- Bắn đạn cũng để Update() -> dẫn tới chưa cập nhật xong CrossHair, viên đạn đã bắn ra
+		- 👉 Bắn đạn để LateUpdate(): _LateUpdate chạy sau khi Update đã hoàn thành_
+		- 👉 Đảm bảo lấy vị trí -> mới bắn
 - một chút về Pool không quên:
 	- GetName(): cái nằm ở mấy script Ctrl: như bulletCtrl, Fire1Ctrl,Fire2Ctrl
 		- 👉 để khi obj despawn -> đưa vào list -> khi dùng -> xóa khỏi list
@@ -72,3 +78,5 @@ ___
 		- ItemInventory: quản lí ItemProfileSO và số lượng item
 		- ItemCode: là enum: gold, wand, iron,....
 		- ItemProfileSO: quản lí ItemCode, tên item, có gộp chung được không(vd: quặng, vũ khí)
+- E67:
+	- Update Observer, những thứ như update text,.. => chuyển thành observer hết
