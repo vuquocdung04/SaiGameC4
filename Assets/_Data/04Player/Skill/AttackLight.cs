@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class AttackLight : AttackAbstract
 {
-    private void Update()
-    {
-        this.Attacking();
-    }
-
+    AttackPoint attackPoint;
     protected override void Attacking()
     {
-        if (InputManager.Instance.IsAttackLight()) Debug.LogError("LightAttack");
+        if (!InputManager.Instance.IsAttackLight()) return;
+
+        attackPoint = this.GetAttackPoint();
+        Debug.LogError(this.attackPoint.transform.position);
     }
 }

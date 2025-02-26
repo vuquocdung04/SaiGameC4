@@ -22,6 +22,9 @@ public class PlayerCtrl : DungMonoBehaviour
     [SerializeField] protected Rig rig;
     public Rig Rig => rig;
 
+    [SerializeField] protected Weapons weapons;
+    public Weapons Weapons => weapons;
+
 
     #region LoadComponents
     protected override void LoadComponents()
@@ -32,6 +35,7 @@ public class PlayerCtrl : DungMonoBehaviour
         this.LoadThirdCamera();
         this.LoadCrossHair();
         this.LoadRig();
+        this.LoadWeapons();
     }
 
     protected virtual void LoadThirdCtrl()
@@ -69,6 +73,14 @@ public class PlayerCtrl : DungMonoBehaviour
         this.rig = transform.Find("Model").Find("AimingRig").GetComponent<Rig>();
 
         Debug.LogWarning(transform.name + ": LoadRig", gameObject);
+    }
+
+    protected virtual void LoadWeapons()
+    {
+        if (this.weapons != null) return;
+        this.weapons = GetComponentInChildren<Weapons>();
+
+        Debug.LogWarning(transform.name + ": LoadWeapons", gameObject);
     }
 
     #endregion
