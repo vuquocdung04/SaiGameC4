@@ -6,6 +6,8 @@ public abstract class AttackAbstract : DungMonoBehaviour
 {
     [Header("Attack Abstract")]
     [SerializeField] protected PlayerCtrl playerCtrl;
+    [SerializeField] protected EffectSpawner spawner;
+    [SerializeField] protected EffectPrefabs prefabs;
     public PlayerCtrl PlayerCtrl => playerCtrl;
 
     protected void Update()
@@ -17,6 +19,7 @@ public abstract class AttackAbstract : DungMonoBehaviour
     {
         base.LoadComponents();
         this.LoadPlayerCtrl();
+        this.LoadEffectSpawner();
     }
     protected virtual void LoadPlayerCtrl()
     {
@@ -24,6 +27,16 @@ public abstract class AttackAbstract : DungMonoBehaviour
         this.playerCtrl = GetComponentInParent<PlayerCtrl>();
 
         Debug.LogWarning(transform.name + ": LoadPlayerCtrl", gameObject);
+    }
+
+    protected virtual void LoadEffectSpawner()
+    {
+        if (this.spawner != null) return;
+        this.spawner = GameObject.FindAnyObjectByType<EffectSpawner>();
+        if (this.prefabs != null) return;
+        this.prefabs = GameObject.FindAnyObjectByType<EffectPrefabs>();
+
+        Debug.LogWarning(transform.name + ": LoadEffectSpawner", gameObject);
     }
 
     protected virtual AttackPoint GetAttackPoint()

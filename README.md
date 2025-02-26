@@ -53,4 +53,7 @@ ___
 ## 🌅Ngày 24/2: E58 -> E60
 - Rig animation cơ bản:
 - Thuộc tính weight để xem IK có được chỉnh sửa hay không
+## 🌅Ngày 25/2: E59 ->E60:
+- ở script: PlayerAiming có hàm RotateToPosition thì tắt cái Rotation On Camera ở VThirdPersonController đi
+## 🌅Ngày 26/2: E61 ->:
 
