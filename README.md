@@ -62,9 +62,13 @@ ___
 	- GetByName(): duyệt list chứa prefabs để bắn ra
 		- 👉 Chỉ để trả về đúng Prefab để spawn ra thay vì gọi prefabs[0],... Đại loại gọi chính nó luôn
 - 📚 E65 **Inventory**: một chút đỡ rối
-	- InventoryManager: quản lí InventoryCtrl
-	- InventoryCtrl: quản lí ItemInventory
-	- InventoryItems: kế thừa từ InventoryCtrl + tự định nghĩa các thứ riêng của nó
-	- InventoryMonies: tương tự như InventoryItems
-	- ItemInventory: quản lí: tên item, số lượng item
-	- InventoryCodeName: enum quản lí tên các item: NoName, Items, Monies
+	- Inventory:
+		- InventoryManager: quản lí list InventoryCtrl
+		- InventoryCtrl: quản lí add item, là lớp cha định nghĩa chung các Inventory
+			- InventoryMonies: kế thừa từ InventoryCtrl, định nghĩa enum của nó:Monies
+			- InventoryItems: kế thừa từ InventoryCtrl, định nghĩa enum: Items
+		- InventoryCodeName: là enum: Monies, Items,...
+	- Item:
+		- ItemInventory: quản lí ItemProfileSO và số lượng item
+		- ItemCode: là enum: gold, wand, iron,....
+		- ItemProfileSO: quản lí ItemCode, tên item, có gộp chung được không(vd: quặng, vũ khí)
