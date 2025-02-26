@@ -52,8 +52,19 @@ ___
 - Cái lỗi raycast ở tower mãi k biết sửa kiễu gì ?:D??
 ## 🌅Ngày 24/2: E58 -> E60
 - Rig animation cơ bản:
-- Thuộc tính weight để xem IK có được chỉnh sửa hay không
+- Thuộc tính weight để xem IK có được chỉnh sửa hayp không
 ## 🌅Ngày 25/2: E59 ->E60:
 - ở script: PlayerAiming có hàm RotateToPosition thì tắt cái Rotation On Camera ở VThirdPersonController đi
 ## 🌅Ngày 26/2: E61 ->:
-
+- một chút về Pool không quên:
+	- GetName(): cái nằm ở mấy script Ctrl: như bulletCtrl, Fire1Ctrl,Fire2Ctrl
+		- 👉 để khi obj despawn -> đưa vào list -> khi dùng -> xóa khỏi list
+	- GetByName(): duyệt list chứa prefabs để bắn ra
+		- 👉 Chỉ để trả về đúng Prefab để spawn ra thay vì gọi prefabs[0],... Đại loại gọi chính nó luôn
+- 📚 E65 **Inventory**: một chút đỡ rối
+	- InventoryManager: quản lí InventoryCtrl
+	- InventoryCtrl: quản lí ItemInventory
+	- InventoryItems: kế thừa từ InventoryCtrl + tự định nghĩa các thứ riêng của nó
+	- InventoryMonies: tương tự như InventoryItems
+	- ItemInventory: quản lí: tên item, số lượng item
+	- InventoryCodeName: enum quản lí tên các item: NoName, Items, Monies
