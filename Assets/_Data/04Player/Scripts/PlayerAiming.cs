@@ -9,7 +9,7 @@ public class PlayerAiming : PlayerAbstract
     [SerializeField] protected bool isAlwaysAiming = false;
     protected float closeLookDistance = 1f;
     protected float farLookDistance = 2.5f;
-
+    CrosshairPointer crosshairPointer;
 
     /// <summary>
     /// Sau dung observer
@@ -22,7 +22,6 @@ public class PlayerAiming : PlayerAbstract
     protected virtual void Aiming()
     {
 
-
         if ( this.isAlwaysAiming || InputManager.Instance.IsRightClick()) this.LookClose();
         else this.LookFar();
     }
@@ -31,7 +30,7 @@ public class PlayerAiming : PlayerAbstract
     {
         this.playerCtrl.VThirdPersonCamera.defaultDistance = this.closeLookDistance;
 
-        CrosshairPointer crosshairPointer = this.playerCtrl.CrosshairPointer;
+        crosshairPointer = this.playerCtrl.CrosshairPointer;
         this.playerCtrl.VThirdPersonController.RotateToPosition(crosshairPointer.transform.position);
         this.playerCtrl.VThirdPersonController.isSprinting = false;
 
