@@ -80,5 +80,6 @@ ___
 		- ItemProfileSO: quản lí ItemCode, tên item, có gộp chung được không(vd: quặng, vũ khí)
 - E67:
 	- Update Observer, những thứ như update text,.. => chuyển thành observer hết
-## 🌅Ngày 26/2: E68 ->:
+## 🌅Ngày 26/2: E68 ->E79:
 - mấy chỗ dropItem, updateText, HotKey, InventoryUI,... => observer hết
+- E79: sửa xíu code cho chuẩn, thống nhất => rơi cái gì thì gọi từ PoolPrefabs thay vì như trên clip

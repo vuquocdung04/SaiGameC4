@@ -8,6 +8,28 @@ public class ItemDropCtrl : PoolObj
     [Header("ItemDropCtrl")]
     [SerializeField] protected Rigidbody _rigi;
     public Rigidbody Rigi => _rigi;
+
+
+    protected InventoryCodeName inventoryCodeName = InventoryCodeName.Items;
+    public InventoryCodeName InventoryCodeName => inventoryCodeName;
+    protected ItemCode itemCode;
+    public ItemCode ItemCode => itemCode;
+    protected int itemCount = 1;
+    public int ItemCount => itemCount;
+
+    public virtual void SetValue(ItemCode itemCode, int itemCount)
+    {
+        this.itemCode = itemCode;
+        this.itemCount = itemCount;
+    }
+    public virtual void SetValue(ItemCode itemCode, int itemCount, InventoryCodeName inventoryCodeName)
+    {
+        this.inventoryCodeName = inventoryCodeName;
+        this.itemCount = itemCount;
+        this.itemCode = itemCode;
+    }
+
+
     public override string GetName()
     {
         return "ItemDrop";

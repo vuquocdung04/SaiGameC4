@@ -10,7 +10,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
 
     // lay item trong danh sach
-    public virtual InventoryCtrl GetByName(InventoryCodeName inventoryName)
+    public virtual InventoryCtrl GetByCodeName(InventoryCodeName inventoryName)
     {
         foreach (InventoryCtrl inventoryCtrl in this.inventories)
         {
@@ -32,13 +32,13 @@ public class InventoryManager : Singleton<InventoryManager>
     //tuong duong InventoryCtrl ctrl = this.GetByName(InventoryCodeName.Monies);
     public virtual InventoryCtrl Monies()
     {
-        return this.GetByName(InventoryCodeName.Monies);
+        return this.GetByCodeName(InventoryCodeName.Monies);
     }
 
     // tuong duong InventoryCtrl ctrl = this.GetByName(InventoryCodeName.Items);
     public virtual InventoryCtrl Items()
     {
-        return this.GetByName(InventoryCodeName.Items);
+        return this.GetByCodeName(InventoryCodeName.Items);
     }
 
     #region LoadComponents
