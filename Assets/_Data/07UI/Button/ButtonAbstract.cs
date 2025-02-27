@@ -9,7 +9,7 @@ public abstract class ButtonAbstract : DungMonoBehaviour
     [Header("Button Abstract")]
     [SerializeField] protected Button button;
 
-    private void Start()
+    protected virtual void Start()
     {
         this.AddOnClickEvent();
     }

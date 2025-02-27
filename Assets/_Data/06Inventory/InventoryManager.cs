@@ -1,30 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 public class InventoryManager : Singleton<InventoryManager>
 {
     [Header("Inventory Manager")]
     [SerializeField] protected List<InventoryCtrl> inventories;
     [SerializeField] protected List<ItemProfileSO> itemProfiles;
-    private void Start()
-    {
-        this.AddTestItem();
-    }
-
-    protected virtual void AddTestItem()
-    {
-        InventoryCtrl wands = this.Items();
-
-        for (int i = 0; i < 20; i++)
-        {
-            ItemInventory wand = new();
-            wand.itemProfile = this.GetProfileByCode(ItemCode.Wand);
-            wand.itemName = "Wand";
-            wand.itemCount = 1;
-            wands.AddItem(wand);
-        }
-    }
 
 
     // lay item trong danh sach

@@ -22,12 +22,34 @@ public abstract class InventoryCtrl : DungMonoBehaviour
         itemExit.itemCount += itemInventory.itemCount;
     }
 
+    public virtual bool RemoveItem(ItemInventory itemInventory)
+    {
+        ItemInventory itemExit = this.FindItemNotEmpty(itemInventory.itemProfile.itemCode);
+        if (itemExit == null) return false;
+        if (itemExit.itemCount < itemInventory.itemCount)   return false;
+        itemExit.itemCount -= itemInventory.itemCount;
+
+        return true;
+    }
+
+    // tim item trong list xem co khong
     public virtual ItemInventory FindItem(ItemCode itemCode)
     {
         foreach (var itemInventory in this.items)
         {
             if(itemInventory.itemProfile.itemCode == itemCode) return itemInventory;
         }
+        return null;
+    }
+
+    public virtual ItemInventory FindItemNotEmpty(ItemCode itemCode)
+    {
+        foreach (var itemInventory in this.items)
+        {
+            if (itemInventory.itemProfile.itemCode != itemCode) continue;
+            if (itemInventory.itemCount > 0) return itemInventory;
+        }
+
         return null;
     }
 }

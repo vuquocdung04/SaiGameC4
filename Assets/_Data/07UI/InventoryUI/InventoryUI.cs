@@ -13,11 +13,12 @@ public class InventoryUI : Singleton<InventoryUI>
     {
         this.Hide();
         this.HideDefaultItemInventory();
+        ObserverManager.AddObserver(Const.ShowWand,ItemUpdating);
     }
 
-    private void FixedUpdate()
+    private void OnDestroy()
     {
-        this.ItemUpdating();
+        ObserverManager.RemoveObserver(Const.ShowWand,ItemUpdating);
     }
 
     public virtual void Hide()
@@ -56,6 +57,8 @@ public class InventoryUI : Singleton<InventoryUI>
                 newBtnItemUI.SetItem(itemInventory);
                 newBtnItemUI.transform.localScale = Vector3.one;
                 newBtnItemUI.gameObject.SetActive(true);
+
+                newBtnItemUI.name = itemInventory.itemName + "_" + itemInventory.itemId;
                 this.btnItems.Add(newBtnItemUI);
             }
 

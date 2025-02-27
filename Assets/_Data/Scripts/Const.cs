@@ -15,6 +15,7 @@ public static class Const
 
     #region Observer
     public const string TextGoldCount = "TextGoldCount";
+    public const string ShowWand = "ShowWand";
 
     #endregion
 }
