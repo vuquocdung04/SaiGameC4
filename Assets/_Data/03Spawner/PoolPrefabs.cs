@@ -6,7 +6,7 @@ public class PoolPrefabs<T> : DungMonoBehaviour where T : MonoBehaviour
 {
     [Header("PoolPrefabs<T>")]
     [SerializeField] protected List<T> prefabs = new();
-
+    public List<T> Prefabs => prefabs;
 
     #region LoadComponents
     protected override void LoadComponents()

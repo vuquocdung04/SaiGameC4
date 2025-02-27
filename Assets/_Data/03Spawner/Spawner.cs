@@ -8,7 +8,7 @@ public abstract class Spawner<T> : DungMonoBehaviour where T : PoolObj
     [SerializeField] protected int spawnCount = 0;
     [SerializeField] protected Transform poolHolder;
     [SerializeField] protected List<T> isPoolObjs;
-
+    public List<T> IsPoolObjs => isPoolObjs;
 
     #region LoadComponents
     protected override void LoadComponents()
