@@ -2861,6 +2861,7 @@ MonoBehaviour:
   itemProfiles:
   - {fileID: 11400000, guid: 6c429442088e07c46b900cd16d86d97a, type: 2}
   - {fileID: 11400000, guid: c74966b9c0f67f54da5e4446ac1713c1, type: 2}
+  - {fileID: 11400000, guid: 9a62c000150f4954b8e4651be15bb7be, type: 2}
 --- !u!114 &798708254
 MonoBehaviour:
   m_ObjectHideFlags: 0

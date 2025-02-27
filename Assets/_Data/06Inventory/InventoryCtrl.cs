@@ -29,6 +29,8 @@ public abstract class InventoryCtrl : DungMonoBehaviour
         if (itemExit.itemCount < itemInventory.itemCount)   return false;
         itemExit.itemCount -= itemInventory.itemCount;
 
+        if (itemExit.itemCount == 0) this.items.Remove(itemExit);
+
         return true;
     }
 

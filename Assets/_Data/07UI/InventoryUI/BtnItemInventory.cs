@@ -41,6 +41,8 @@ public class BtnItemInventory : ButtonAbstract
     {
         this.itemTextName.text = itemInventory.itemName;
         this.itemTextCount.text = itemInventory.itemCount.ToString();
+
+        if (this.itemInventory.itemCount == 0) Destroy(gameObject);
     }
 
     #region LoadComponent
