@@ -20,11 +20,16 @@ public class InputManager : Singleton<InputManager>
 
     protected virtual void CheckAttackLight()
     {
-        if (!this.isAiming) return;
+        if (!this.IsAiming())
+        {
+            this.isAttackHeavy = false;
+            this.isAttackLight = false;
+            return;
+        }
 
         if (Input.GetMouseButton(0)) this.attackHold += Time.deltaTime;
 
-        if(this.isAttackLight = Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0))
         {
             this.isAttackLight = this.attackHold < this.attackLightLimit;
             this.attackHold = 0;

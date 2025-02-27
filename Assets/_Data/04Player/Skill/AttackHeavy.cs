@@ -6,9 +6,16 @@ public class AttackHeavy : AttackAbstract
 {
     AttackPoint attackPoint;
     string effectName = "Fire2";
+
+    protected float timer = 0;
+    protected float delay = 0.1f;
     protected override void Attacking()
     {
         if (!InputManager.Instance.IsAttackHeavy()) return;
+
+        this.timer += Time.deltaTime;
+        if (this.timer < this.delay) return;
+        this.timer = 0;
 
         attackPoint = this.GetAttackPoint();
 

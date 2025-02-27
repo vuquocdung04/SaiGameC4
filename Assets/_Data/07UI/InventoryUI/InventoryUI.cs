@@ -7,6 +7,7 @@ public class InventoryUI : Singleton<InventoryUI>
     [SerializeField] protected bool isShow = false;
     bool IsShow => isShow;
 
+    [SerializeField] protected Transform showInventory;
     [SerializeField] protected BtnItemInventory defaultItemInventoryUI;
     protected List<BtnItemInventory> btnItems = new();
     private void Start()
@@ -14,22 +15,29 @@ public class InventoryUI : Singleton<InventoryUI>
         this.Hide();
         this.HideDefaultItemInventory();
         ObserverManager.AddObserver(Const.ShowWand,ItemUpdating);
+        ObserverManager.AddObserver(Const.HotKeyUI,this.HotKeyToggleInventory);
     }
 
     private void OnDestroy()
     {
         ObserverManager.RemoveObserver(Const.ShowWand,ItemUpdating);
+        ObserverManager.RemoveObserver(Const.HotKeyUI, this.HotKeyToggleInventory);
+    }
+
+    protected virtual void HotKeyToggleInventory()
+    {
+        if (InputHotKey.Instance.IsToggleInventoryUI) this.Toggle();
     }
 
     public virtual void Hide()
     {
-        gameObject.SetActive(false);
+        this.showInventory.gameObject.SetActive(false);
         this.isShow = false;
     }
 
     public virtual void Show()
     {
-        gameObject.SetActive(true);
+        this.showInventory.gameObject.SetActive(true);
         this.isShow = true;
     }
 
@@ -80,6 +88,7 @@ public class InventoryUI : Singleton<InventoryUI>
     {
         base.LoadComponents();
         this.LoadBtnItemInventory();
+        this.LoadShowInventory();
     }
     protected virtual void LoadBtnItemInventory()
     {
@@ -87,6 +96,14 @@ public class InventoryUI : Singleton<InventoryUI>
         this.defaultItemInventoryUI = GetComponentInChildren<BtnItemInventory>();
 
         Debug.LogWarning(transform.name + ": LoadBtnItemInventory", gameObject);
+    }
+
+    protected virtual void LoadShowInventory()
+    {
+        if (this.showInventory != null) return;
+        this.showInventory = transform.Find("ShowInventory");
+
+        Debug.LogWarning(transform.name + ": LoadShowInventory", gameObject);
     }
 
     #endregion

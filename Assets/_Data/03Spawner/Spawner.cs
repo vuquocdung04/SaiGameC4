@@ -6,7 +6,7 @@ public abstract class Spawner<T> : DungMonoBehaviour where T : PoolObj
 {
     [Header("Spawner<T>")]
     [SerializeField] protected int spawnCount = 0;
-    [SerializeField] protected PoolHolder poolHolder;
+    [SerializeField] protected Transform poolHolder;
     [SerializeField] protected List<T> isPoolObjs;
 
 
@@ -20,7 +20,12 @@ public abstract class Spawner<T> : DungMonoBehaviour where T : PoolObj
     protected virtual void LoadPoolHolder()
     {
         if (this.poolHolder != null) return;
-        this.poolHolder = GetComponentInChildren<PoolHolder>();
+        this.poolHolder = transform.Find("PoolHolder");
+        if(this.poolHolder == null)
+        {
+            this.poolHolder = new GameObject("PoolHolder").transform;
+            this.poolHolder.parent = transform;
+        }
         Debug.LogWarning(transform.name + ": LoadPoolHolder", gameObject);
     }
 

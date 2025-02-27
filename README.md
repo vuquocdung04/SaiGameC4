@@ -55,7 +55,7 @@ ___
 - Thuộc tính weight để xem IK có được chỉnh sửa hayp không
 ## 🌅Ngày 25/2: E59 ->E60:
 - ở script: PlayerAiming có hàm RotateToPosition thì tắt cái Rotation On Camera ở VThirdPersonController đi
-## 🌅Ngày 26/2: E61 ->:
+## 🌅Ngày 26/2: E61 -> E67:
 - Trong game, player bắn: đạn bay theo hướng crossHair(playerShoot)
 	- 🛠Nhưng xảy ra 1 lỗi đó là: có 1 vị trí mà nó bay ra 2 đường đạn? tại sao?
 		- CrossHair: lấy vị trí chuột, cập nhật bằng Update()
@@ -80,3 +80,5 @@ ___
 		- ItemProfileSO: quản lí ItemCode, tên item, có gộp chung được không(vd: quặng, vũ khí)
 - E67:
 	- Update Observer, những thứ như update text,.. => chuyển thành observer hết
+## 🌅Ngày 26/2: E68 ->:
+- mấy chỗ dropItem, updateText, HotKey, InventoryUI,... => observer hết

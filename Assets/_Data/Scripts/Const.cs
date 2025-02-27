@@ -17,5 +17,7 @@ public static class Const
     public const string TextGoldCount = "TextGoldCount";
     public const string ShowWand = "ShowWand";
 
+
+    public const string HotKeyUI = "HoyKeyShowUI";
     #endregion
 }
