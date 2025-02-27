@@ -6,7 +6,6 @@ using UnityEngine;
 public class ItemProfileSO : ScriptableObject
 {
     public ItemCode itemCode;
-    public string itemName;
     // co gop chung duoc khong
     public bool isStackable = false;
 }

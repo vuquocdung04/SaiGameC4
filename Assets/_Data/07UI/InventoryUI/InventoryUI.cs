@@ -7,11 +7,17 @@ public class InventoryUI : Singleton<InventoryUI>
     [SerializeField] protected bool isShow = false;
     bool IsShow => isShow;
 
-    [SerializeField] protected BtnItemInventory itemInventory;
+    [SerializeField] protected BtnItemInventory defaultItemInventoryUI;
+    protected List<BtnItemInventory> btnItems = new();
     private void Start()
     {
         this.Hide();
         this.HideDefaultItemInventory();
+    }
+
+    private void FixedUpdate()
+    {
+        this.ItemUpdating();
     }
 
     public virtual void Hide()
@@ -34,7 +40,36 @@ public class InventoryUI : Singleton<InventoryUI>
 
     protected virtual void HideDefaultItemInventory()
     {
-        this.itemInventory.gameObject.SetActive(false);
+        this.defaultItemInventoryUI.gameObject.SetActive(false);
+    }
+
+    protected virtual void ItemUpdating()
+    {
+        InventoryCtrl itemInvCtrl = InventoryManager.Instance.Items();
+        foreach (ItemInventory itemInventory in itemInvCtrl.Items)
+        {
+            BtnItemInventory newBtnItemUI = this.GetExitsItem(itemInventory);
+            if(newBtnItemUI == null)
+            {
+                newBtnItemUI = Instantiate(this.defaultItemInventoryUI);
+                newBtnItemUI.transform.SetParent(this.defaultItemInventoryUI.transform.parent);
+                newBtnItemUI.SetItem(itemInventory);
+                newBtnItemUI.transform.localScale = Vector3.one;
+                newBtnItemUI.gameObject.SetActive(true);
+                this.btnItems.Add(newBtnItemUI);
+            }
+
+        }
+    }
+
+    protected virtual BtnItemInventory GetExitsItem(ItemInventory itemInventory)
+    {
+        foreach (BtnItemInventory btnItemInventory in this.btnItems)
+        {
+            if (btnItemInventory.ItemInventory.itemId == itemInventory.itemId) 
+                return btnItemInventory;
+        }
+        return null;
     }
 
     #region LoadComponent
@@ -45,8 +80,8 @@ public class InventoryUI : Singleton<InventoryUI>
     }
     protected virtual void LoadBtnItemInventory()
     {
-        if (this.itemInventory != null) return;
-        this.itemInventory = GetComponentInChildren<BtnItemInventory>();
+        if (this.defaultItemInventoryUI != null) return;
+        this.defaultItemInventoryUI = GetComponentInChildren<BtnItemInventory>();
 
         Debug.LogWarning(transform.name + ": LoadBtnItemInventory", gameObject);
     }

@@ -9,26 +9,21 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] protected List<ItemProfileSO> itemProfiles;
     private void Start()
     {
-        //this.AddTestItem();
+        this.AddTestItem();
     }
 
     protected virtual void AddTestItem()
     {
-        InventoryCtrl ctrl = this.GetByName(InventoryCodeName.Monies);
+        InventoryCtrl wands = this.Items();
 
-        ItemInventory item = new()
+        for (int i = 0; i < 20; i++)
         {
-            itemProfile = GetProfileByCode(ItemCode.Gold),
-            itemCount = 4
-        };
-        ctrl.AddItem(item);
-
-        ItemInventory item1 = new()
-        {
-            itemProfile = GetProfileByCode(ItemCode.Gold),
-            itemCount = 3
-        };
-        ctrl.AddItem(item1);
+            ItemInventory wand = new();
+            wand.itemProfile = this.GetProfileByCode(ItemCode.Wand);
+            wand.itemName = "Wand";
+            wand.itemCount = 1;
+            wands.AddItem(wand);
+        }
     }
 
 

@@ -946,7 +946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DontDestroyOnLoad: 1
   isShow: 0
-  itemInventory: {fileID: 1675461364}
+  defaultItemInventoryUI: {fileID: 1675461364}
 --- !u!1 &201451288
 GameObject:
   m_ObjectHideFlags: 0

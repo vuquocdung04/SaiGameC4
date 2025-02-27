@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5548e68a456564458afb45258d15273, type: 3}
   m_Name: Wand
   m_EditorClassIdentifier: 
-  itemCode: 1
-  itemName: Wand
+  itemCode: 100
   isStackable: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class InventoryCtrl : DungMonoBehaviour
 {
     [SerializeField] protected List<ItemInventory> items = new();
-
+    public List<ItemInventory> Items => items;
     public abstract InventoryCodeName GetName();
 
     public virtual void AddItem(ItemInventory itemInventory)
@@ -14,6 +14,7 @@ public abstract class InventoryCtrl : DungMonoBehaviour
 
         if(!itemInventory.itemProfile.isStackable || itemExit == null)
         {
+            itemInventory.itemId = Random.Range(0,999999999);
             this.items.Add(itemInventory);
             return;
         }
