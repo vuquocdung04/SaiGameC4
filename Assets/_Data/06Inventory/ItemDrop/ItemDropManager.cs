@@ -31,14 +31,14 @@ public class ItemDropManager : Singleton<ItemDropManager>
         if(itemDropCtrl == null) itemDropCtrl = this.ItemDropPrefabs.GetByName("DefaultDrop");
         ItemDropCtrl newItem = this.itemDropSpawner.Spawn(itemDropCtrl, dropPos);
 
-        if (itemDropCtrl == this.itemDropPrefabs.GetByName("Gold"))
+        if(itemDropCtrl == this.itemDropPrefabs.GetByName("Wand"))
         {
-            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Currency);
+            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Items);
         }
         else
         {
 
-            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Items);
+            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Currency);
         }
 
         newItem.gameObject.SetActive(true);

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BtnItemInventory : ButtonAbstract
 {
     [Header("BtnItemInventory")]
+    [SerializeField] protected TMP_Text itemTextName;
     [SerializeField] protected TMP_Text itemTextCount;
-    [SerializeField] protected Image itemSprite;
 
 
     protected ItemInventory itemInventory;
@@ -40,8 +39,9 @@ public class BtnItemInventory : ButtonAbstract
 
     protected virtual void ItemUpdating()
     {
+        this.itemTextName.text = itemInventory.itemProfile.itemCode.ToString();
         this.itemTextCount.text = itemInventory.itemCount.ToString();
-        this.itemSprite.sprite = itemInventory.itemProfile.sprite;
+
         if (this.itemInventory.itemCount == 0) Destroy(gameObject);
     }
 
@@ -51,21 +51,22 @@ public class BtnItemInventory : ButtonAbstract
     {
         base.LoadComponents();
         this.LoadTextCount();
-        this.LoadItemSprite();
+        this.LoadTextName();
     }
     protected virtual void LoadTextCount()
     {
         if (this.itemTextCount != null) return;
-        this.itemTextCount = transform.Find("Badge").Find("Image").Find("ItemCount").GetComponent<TMP_Text>();
+        this.itemTextCount = transform.Find("ItemCount").GetComponent<TMP_Text>();
 
         Debug.LogWarning(transform.name + ": LoadTextCount", gameObject);
     }
-    protected virtual void LoadItemSprite()
+    protected virtual void LoadTextName()
     {
-        if (this.itemSprite != null) return;
-        this.itemSprite = transform.Find("ItemSprite").GetComponent<Image>();
+        if (this.itemTextName != null) return;
+        this.itemTextName = transform.Find("ItemName").GetComponent<TMP_Text>();
 
-        Debug.LogWarning(transform.name + ": LoadItemSprite", gameObject);
+        Debug.LogWarning(transform.name + ": LoadTextName", gameObject);
     }
+
     #endregion
 }

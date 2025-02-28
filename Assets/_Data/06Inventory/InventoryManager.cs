@@ -46,7 +46,6 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         base.LoadComponents();
         this.LoadInventories();
-        this.LoadItemProfileSO();
     }
 
     protected virtual void LoadInventories()
@@ -59,18 +58,6 @@ public class InventoryManager : Singleton<InventoryManager>
             inventories.Add(inventoryCtrl);
         }
         Debug.LogWarning(transform.name + ": LoadInventories", gameObject);
-    }
-
-    protected virtual void LoadItemProfileSO()
-    {
-        if (this.itemProfiles.Count > 0) return;
-        // de "" la load toan bo Resources
-        ItemProfileSO[] itemProfileSOs = Resources.LoadAll<ItemProfileSO>("");
-        this.itemProfiles = new List<ItemProfileSO>(itemProfileSOs);
-
-        Debug.LogWarning(transform.name + ": LoadItemProfileSO", gameObject);
-
-
     }
 
     #endregion
