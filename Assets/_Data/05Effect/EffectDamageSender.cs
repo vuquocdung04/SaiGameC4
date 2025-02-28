@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(CapsuleCollider))]
 
 
 public class EffectDamageSender : DamageSender
 {
     [Header("BulletDamageSender")]
-    [SerializeField] protected SphereCollider sphereCollider;
-    public SphereCollider SphereCollider => sphereCollider;
+    [SerializeField] protected CapsuleCollider capsunCollider;
+    public CapsuleCollider CapsunCollider => capsunCollider;
 
     [SerializeField] protected EffectCtrl effectCtrl;
     public EffectCtrl EffectCtrl => effectCtrl;
 
+    [SerializeField] protected EffectHitSpawner effectHitSpawner;
+    public EffectHitSpawner EffectHitSpawner => effectHitSpawner;
+
+    [SerializeField] protected EffectHitPrefab effectHitPrefab;
 
     #region LoadComponents
     protected override void LoadComponents()
@@ -24,10 +28,14 @@ public class EffectDamageSender : DamageSender
     }
     protected virtual void LoadSphereCollider()
     {
-        if (this.sphereCollider != null) return;
-        this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.isTrigger = true;
-        this.sphereCollider.radius = 0.05f;
+        if (this.capsunCollider != null) return;
+        this.capsunCollider = GetComponent<CapsuleCollider>();
+        this.capsunCollider.isTrigger = true;
+        this.capsunCollider.radius = 0.2f;
+        this.capsunCollider.height = 0.75f;
+        this.capsunCollider.direction = 0;
+        this.capsunCollider.center = new Vector3(-0.5f,0,0);
+
         Debug.LogWarning(transform.name + ": LoadSphereCollider", gameObject);
 
     }
@@ -45,6 +53,10 @@ public class EffectDamageSender : DamageSender
     {
         base.Send(damageReceiever);
         this.EffectCtrl.DespawnBase.DoDespawn();
+        EffectHitCtrl fireHitCtrl = this.effectHitSpawner.Spawn(this.effectHitPrefab.GetByName("Magic_Hit"), this.transform.parent.position);
+        fireHitCtrl.gameObject.SetActive(true);
         //this.despawn
+
     }
+
 }

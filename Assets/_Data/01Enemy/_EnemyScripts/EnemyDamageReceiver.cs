@@ -73,8 +73,8 @@ public class EnemyDamageReceiver : DamageReceiver
     //roi do khi chet
     protected virtual void DropOnDead()
     {
-        ItemDropManager.Instance.DropMany(ItemCode.Gold,10,transform.position);
-        ItemDropManager.Instance.DropMany(ItemCode.Wand,10,transform.position);
+        ItemDropManager.Instance.DropMany(ItemCode.Gold,20,transform.position);
+        ItemDropManager.Instance.DropMany(ItemCode.Wand,1,transform.position);
         ItemDropManager.Instance.DropMany(ItemCode.PotionMana,10,transform.position);
     }
 }
