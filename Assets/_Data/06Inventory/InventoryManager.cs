@@ -32,7 +32,7 @@ public class InventoryManager : Singleton<InventoryManager>
     //tuong duong InventoryCtrl ctrl = this.GetByName(InventoryCodeName.Monies);
     public virtual InventoryCtrl Monies()
     {
-        return this.GetByCodeName(InventoryCodeName.Monies);
+        return this.GetByCodeName(InventoryCodeName.Currency);
     }
 
     // tuong duong InventoryCtrl ctrl = this.GetByName(InventoryCodeName.Items);

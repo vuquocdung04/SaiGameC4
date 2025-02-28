@@ -16,5 +16,6 @@ public class ItemDropDespawn : Despawn<ItemDropCtrl>
         InventoryManager.Instance.GetByCodeName(itemDropCtrl.InventoryCodeName).AddItem(item);
         base.DoDespawn();
         ObserverManager.Notify(Const.TextGoldCount);
+        ObserverManager.Notify(Const.ShowWand);
     }
 }

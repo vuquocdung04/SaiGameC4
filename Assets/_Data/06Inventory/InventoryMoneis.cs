@@ -6,6 +6,6 @@ public class InventoryMoneis : InventoryCtrl
 {
     public override InventoryCodeName GetName()
     {
-        return InventoryCodeName.Monies;
+        return InventoryCodeName.Currency;
     }
 }

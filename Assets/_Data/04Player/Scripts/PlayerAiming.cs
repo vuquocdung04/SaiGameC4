@@ -7,8 +7,8 @@ public class PlayerAiming : PlayerAbstract
 {
     [Header("Player Aiming")]
     [SerializeField] protected bool isAlwaysAiming = false;
-    protected float closeLookDistance = 1f;
-    protected float farLookDistance = 2.5f;
+    protected float closeLookDistance = 1.5f;
+    protected float farLookDistance = 3f;
     CrosshairPointer crosshairPointer;
 
     /// <summary>

@@ -11,27 +11,41 @@ public class ItemDropManager : Singleton<ItemDropManager>
     [SerializeField] protected ItemDropPrefabs itemDropPrefabs;
     public ItemDropPrefabs ItemDropPrefabs => itemDropPrefabs;
 
-    string Gold = "Gold";
+    [SerializeField] float spawnHeight = 0.3f;
+    [SerializeField] float forceAmount = 0.3f;
 
-    protected float spawnHeight = 1f;
-    protected float forceAmount = 5f;
-    protected int numberOfItems = 10;
 
+    public virtual void DropMany(ItemCode itemCode, int dropCount,Vector3 tranformPos)
+    {
+        for (int i = 0; i < dropCount; i++)
+        {
+            ItemDropManager.Instance.Drop(itemCode, 1, tranformPos);
+        }
+    }
 
     // drop enemy
     public virtual void Drop(ItemCode itemCode, int dropCount, Vector3 dropPos)
     {
         Vector3 spawnPos = dropPos + new Vector3(Random.Range(-2, 2), spawnHeight);
-        ItemDropCtrl itemDropCtrl = this.itemDropPrefabs.GetByName(this.Gold);
+        ItemDropCtrl itemDropCtrl = this.itemDropPrefabs.GetByName(itemCode.ToString());
+        if(itemDropCtrl == null) itemDropCtrl = this.ItemDropPrefabs.GetByName("DefaultDrop");
         ItemDropCtrl newItem = this.itemDropSpawner.Spawn(itemDropCtrl, dropPos);
 
-        newItem.SetValue(itemCode, dropCount, InventoryCodeName.Monies);
+        if(itemDropCtrl == this.itemDropPrefabs.GetByName("Wand"))
+        {
+            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Items);
+        }
+        else
+        {
+
+            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Currency);
+        }
 
         newItem.gameObject.SetActive(true);
 
         Vector3 randomDirection = Random.onUnitSphere;
         randomDirection.y = Mathf.Abs(randomDirection.y);
-        newItem.Rigi.AddForce(randomDirection * forceAmount, ForceMode.Impulse);
+        newItem.Rigi.AddForce(randomDirection * forceAmount);
 
 
 
