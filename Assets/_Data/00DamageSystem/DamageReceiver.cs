@@ -6,7 +6,9 @@ public abstract class DamageReceiver : DungMonoBehaviour
 {
     [Header("DamageReceiever")]
     [SerializeField] protected int maxHp = 10;
+    public int MaxHp => maxHp;
     [SerializeField] protected int currentHP = 10;
+    public int CurrentHP => currentHP;
     [SerializeField] protected bool isDead = false;
     // bat tu
     [SerializeField] protected bool isImmotal = false;

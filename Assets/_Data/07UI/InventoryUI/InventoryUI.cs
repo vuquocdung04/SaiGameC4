@@ -8,6 +8,7 @@ public class InventoryUI : Singleton<InventoryUI>
     bool IsShow => isShow;
 
     [SerializeField] protected Transform showInventory;
+    //Btn itemNot stack
     [SerializeField] protected BtnItemInventory defaultItemInventoryUI;
     protected List<BtnItemInventory> btnItems = new();
     private void Start()
@@ -60,7 +61,14 @@ public class InventoryUI : Singleton<InventoryUI>
             BtnItemInventory newBtnItemUI = this.GetExitsItem(itemInventory);
             if(newBtnItemUI == null)
             {
-                newBtnItemUI = Instantiate(this.defaultItemInventoryUI);
+                if (!itemInventory.itemProfile.isStackable)
+                    newBtnItemUI = Instantiate(this.defaultItemInventoryUI);
+                else
+                {
+                    //note: sinh ra item not stackable
+                    newBtnItemUI = Instantiate(this.defaultItemInventoryUI);
+                }
+                Debug.LogError("Sinh ra 1 button");
                 newBtnItemUI.transform.SetParent(this.defaultItemInventoryUI.transform.parent);
                 newBtnItemUI.SetItem(itemInventory);
                 newBtnItemUI.transform.localScale = Vector3.one;

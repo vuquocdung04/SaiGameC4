@@ -42,6 +42,7 @@ public class DamageSender : DungMonoBehaviour
     protected virtual void Send(DamageReceiver damageReceiever)
     {
         damageReceiever.Deduct(this.damage);
+        ObserverManager.Notify(Const.HpBar);
 
     }
 }

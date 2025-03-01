@@ -18,6 +18,9 @@ public static class Const
     public const string ShowWand = "ShowWand";
     public const string PlayerLevel = "PlayerLevel";
 
+
+    public const string HpBar = "HpBar";
+
     public const string HotKeyUI = "HoyKeyShowUI";
     #endregion
 }
