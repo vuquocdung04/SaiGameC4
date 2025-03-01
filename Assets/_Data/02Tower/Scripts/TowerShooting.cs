@@ -14,6 +14,11 @@ public class TowerShooting : TowerAbstract
     [SerializeField] protected float targetLoadingCountDown = 1f;
     [SerializeField] protected float shootCountDown = 1f;
     [SerializeField] protected float rotationSpeed = 2f;
+    [Space(5)]
+    [SerializeField] protected int killCount;
+    [SerializeField] protected int totalKill;
+    public int KillCount => killCount;
+
     Vector3 directionToTarget;
     Vector3 newDirection;
 
@@ -29,7 +34,19 @@ public class TowerShooting : TowerAbstract
     private void FixedUpdate()
     {
         this.LookingAtTarget();
+        this.IsTargetDead();
     }
+
+    protected virtual bool IsTargetDead()
+    {
+        if (this.enemyTarget == null) return true;
+        if (!this.enemyTarget.EnemyDamageReceiver.IsDead()) return false;
+        this.killCount++;
+        this.totalKill++;
+        this.enemyTarget = null;
+        return true;
+    }
+
 
     //tim Target gan nhat de nhin
     protected virtual void TargetNearestLoading()
@@ -76,5 +93,14 @@ public class TowerShooting : TowerAbstract
         if (this.currentFirePoint == this.towerCtrl.FirePoints.Count) this.currentFirePoint = 0;
 
         return firePoint;
+    }
+
+
+    //get killcount thong qua ham
+    public virtual bool DeductKillCount(int count)
+    {
+        if (this.killCount < count) return false;
+        this.killCount -= count;
+        return true;
     }
 }

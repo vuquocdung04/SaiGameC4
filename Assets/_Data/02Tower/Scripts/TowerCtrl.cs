@@ -23,9 +23,11 @@ public class TowerCtrl : DungMonoBehaviour
     public BulletPrefabs BulletPrefabs => bulletPrefabs;
 
 
+    [SerializeField] protected TowerShooting towerShooting;
+    public TowerShooting TowerShooting => towerShooting;
+
     [SerializeField] protected List<FirePoint> firePoints = new();
     public List<FirePoint> FirePoints => firePoints;
-
 
     #region LoadComponents
     protected override void LoadComponents()
@@ -36,6 +38,7 @@ public class TowerCtrl : DungMonoBehaviour
         this.LoadBulletSpawner();
         this.LoadFirePoints();
         this.LoadBulletPrefabs();
+        this.LoadTowerShooting();
     }
 
     protected virtual void LoadModel()
@@ -84,6 +87,12 @@ public class TowerCtrl : DungMonoBehaviour
         FirePoint[] points = transform.GetComponentsInChildren<FirePoint>();
         this.firePoints = new List<FirePoint>(points);
         Debug.LogWarning(transform.name + ": LoadFirePoints", gameObject);
+    }
+    protected virtual void LoadTowerShooting()
+    {
+        if (this.towerShooting != null) return;
+        this.towerShooting = GetComponentInChildren<TowerShooting>();
+        Debug.LogWarning(transform.name + ": LoadTowerShooting", gameObject);
     }
     #endregion
     protected virtual void HidePrefab()
