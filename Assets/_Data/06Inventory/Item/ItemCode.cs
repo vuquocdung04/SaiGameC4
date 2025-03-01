@@ -5,4 +5,6 @@ public enum ItemCode
     Gold = 1,
     PotionMana = 2,
     Wand = 100,
+
+    PlayerExp = 200,
 }

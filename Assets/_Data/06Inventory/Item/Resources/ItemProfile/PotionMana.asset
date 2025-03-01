@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PotionMana
   m_EditorClassIdentifier: 
   itemCode: 2
+  inventoryCode: 2
   isStackable: 1

@@ -10,7 +10,7 @@ public class ItemDropCtrl : PoolObj
     public Rigidbody Rigi => _rigi;
 
 
-    protected InventoryCodeName inventoryCodeName = InventoryCodeName.Items;
+    protected InventoryCodeName inventoryCodeName;
     public InventoryCodeName InventoryCodeName => inventoryCodeName;
     protected ItemCode itemCode;
     public ItemCode ItemCode => itemCode;

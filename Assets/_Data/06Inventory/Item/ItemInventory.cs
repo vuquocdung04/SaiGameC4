@@ -10,4 +10,11 @@ public class ItemInventory
     public string itemName;
     public ItemProfileSO itemProfile;
     public int itemCount;
+
+    public virtual bool Deduct(int number)
+    {
+        if (this.itemCount < number) return false;
+        this.itemCount -= number;
+        return true;
+    }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   itemCode: 1
-  itemName: Gold
+  inventoryCode: 1
   isStackable: 1

@@ -17,5 +17,6 @@ public class ItemDropDespawn : Despawn<ItemDropCtrl>
         base.DoDespawn();
         ObserverManager.Notify(Const.TextGoldCount);
         ObserverManager.Notify(Const.ShowWand);
+        ObserverManager.Notify(Const.PlayerLevel);
     }
 }

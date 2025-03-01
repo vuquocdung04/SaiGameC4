@@ -80,6 +80,17 @@ ___
 		- ItemProfileSO: quản lí ItemCode, tên item, có gộp chung được không(vd: quặng, vũ khí)
 - E67:
 	- Update Observer, những thứ như update text,.. => chuyển thành observer hết
-## 🌅Ngày 26/2: E68 ->E79:
+## 🌅Ngày 27/2: E68 ->E79:
 - mấy chỗ dropItem, updateText, HotKey, InventoryUI,... => observer hết
+- E77: ItemDrop sẽ xử lí theo kiểu:
+	- lúc kill quái rơi: thì item đó sẽ == với tên Item trong inventory
+	- từ đó setup cho nó là kiểu: Items(cho được vào inventory) hay currency(cộng thẳng text như: gold,...
+	- 📝Câu hỏi: sao không cho nó rơi là setup sẵn là currency hay Items đi? mà rơi rồi mới setup nó?
+	- 👉 Cách làm như thế cũng hay vì:
+		- Thủ công mỗi đoạn update text lên màn hình
+		- Sau có 100,1000 item mà cho được vào inventory -> lại dễ setup, không phải tạo 1000 thằng rồi cài đặt nó là items hay currency
 - E79: sửa xíu code cho chuẩn, thống nhất => rơi cái gì thì gọi từ PoolPrefabs thay vì như trên clip
+## 🌅Ngày 28/2: E80
+- Nay vày tí thay đổi UI, VFX rồi bấm trong sourtree có cái revertCommit => nó reset mọi thứ về lại E80 luôn =)), thế thôi lại học tiếp =))
+## 🌅Ngày 28/2: E81 ->
+

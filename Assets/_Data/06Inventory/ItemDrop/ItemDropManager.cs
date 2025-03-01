@@ -27,19 +27,31 @@ public class ItemDropManager : Singleton<ItemDropManager>
     public virtual void Drop(ItemCode itemCode, int dropCount, Vector3 dropPos)
     {
         Vector3 spawnPos = dropPos + new Vector3(Random.Range(-2, 2), spawnHeight);
+
+        // lay item drop
         ItemDropCtrl itemDropCtrl = this.itemDropPrefabs.GetByName(itemCode.ToString());
+        //khong co thi spawn ra defaultDrop
         if(itemDropCtrl == null) itemDropCtrl = this.ItemDropPrefabs.GetByName("DefaultDrop");
+        
+        // spawner ra item
         ItemDropCtrl newItem = this.itemDropSpawner.Spawn(itemDropCtrl, dropPos);
 
-        if(itemDropCtrl == this.itemDropPrefabs.GetByName("Wand"))
-        {
-            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Items);
-        }
-        else
-        {
+        Debug.LogError(newItem.InventoryCodeName);
 
-            newItem.SetValue(itemCode, dropCount, InventoryCodeName.Currency);
+        switch (itemDropCtrl.name)
+        {
+            case "Gold":
+                newItem.SetValue(itemCode, dropCount, InventoryCodeName.Currency);
+                break;
+            case "PlayerExp":
+                newItem.SetValue(itemCode, dropCount, InventoryCodeName.Currency);
+                break;
+            default:
+                newItem.SetValue(itemCode, dropCount, InventoryCodeName.Items);
+                break;
         }
+
+
 
         newItem.gameObject.SetActive(true);
 

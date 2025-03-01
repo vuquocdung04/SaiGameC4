@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Wand
   m_EditorClassIdentifier: 
   itemCode: 100
+  inventoryCode: 2
   isStackable: 0
