@@ -16,7 +16,7 @@ public class DamageSender : DungMonoBehaviour
     {
         DamageReceiver damageReceiver = other.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
-        this.Send(damageReceiver, other);
+        this.Send(damageReceiver);
 
         //Debug.LogError("check");
     }
@@ -39,7 +39,7 @@ public class DamageSender : DungMonoBehaviour
     #endregion
 
 
-    protected virtual void Send(DamageReceiver damageReceiever, Collider other)
+    protected virtual void Send(DamageReceiver damageReceiever)
     {
         damageReceiever.Deduct(this.damage);
         ObserverManager.Notify(Const.HpBar);

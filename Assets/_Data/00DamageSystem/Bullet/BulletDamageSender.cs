@@ -40,9 +40,9 @@ public class BulletDamageSender : DamageSender
 
     #endregion
 
-    protected override void Send(DamageReceiver damageReceiever, Collider other)
+    protected override void Send(DamageReceiver damageReceiever)
     {
-        base.Send(damageReceiever, other);
+        base.Send(damageReceiever);
         this.bulletCtrl.Bullet.DespawnBase.DoDespawn();
         //this.despawn
     }

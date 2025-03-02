@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackLight : AttackAbstract
 {
     AttackPoint attackPoint;
-    string effectName = "MagicFire";
+    string effectName = "Fire1";
     protected override void Attacking()
     {
         if (!InputManager.Instance.IsAttackLight()) return;
