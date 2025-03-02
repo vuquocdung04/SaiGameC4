@@ -41,10 +41,24 @@ public class EffectDamageSender : DamageSender
 
     #endregion
 
-    protected override void Send(DamageReceiver damageReceiever)
+    protected override void Send(DamageReceiver damageReceiever, Collider other)
     {
-        base.Send(damageReceiever);
+        base.Send(damageReceiever, other);
+        this.ShowHitEffect(other);
+        Debug.LogError(other);
         this.EffectCtrl.DespawnBase.DoDespawn();
         //this.despawn
+    }
+
+    protected virtual void ShowHitEffect(Collider other)
+    {
+        Vector3 hitPoint =  other.ClosestPoint(transform.position);
+        EffectCtrl effect = EffectSpawnerCtrl.Instance.EffectPrefabs.GetByName(this.GetHitName());
+        EffectCtrl newObj = EffectSpawnerCtrl.Instance.EffectSpawner.Spawn(effect, hitPoint);
+        newObj.gameObject.SetActive(true);
+    }
+    protected virtual string GetHitName()
+    {
+        return "HitFire";
     }
 }
