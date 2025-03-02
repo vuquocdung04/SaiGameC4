@@ -92,5 +92,10 @@ ___
 - E79: sửa xíu code cho chuẩn, thống nhất => rơi cái gì thì gọi từ PoolPrefabs thay vì như trên clip
 ## 🌅Ngày 28/2: E80
 - Nay vày tí thay đổi UI, VFX rồi bấm trong sourtree có cái revertCommit => nó reset mọi thứ về lại E80 luôn =)), thế thôi lại học tiếp =))
-## 🌅Ngày 28/2: E81 ->
-
+## 🌅Ngày 28/2: E81
+## 🌅Ngày 1/3: E81 -> E84:
+- Level cơ bản: như mọi lần thì dùng observer thay cho fixupdate
+## 🌅Ngày 2/3: E85:
+- Sourcetree: có tính năng revertCommit
+	- vd: làm nhặng rồi đẩy lên git, xong bấm revertCommit nó sẽ quay lại commit gần nhất
+- Projectile nay bắn ra nó cứ ngang ngang không bay thẳng => do model =)), sửa lại -90 là hoạt động perfect

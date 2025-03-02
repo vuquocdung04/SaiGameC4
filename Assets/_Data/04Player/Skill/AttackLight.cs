@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackLight : AttackAbstract
 {
     AttackPoint attackPoint;
-    string effectName = "Fire1";
+    string effectName = "MagicEarth";
     protected override void Attacking()
     {
         if (!InputManager.Instance.IsAttackLight()) return;
@@ -15,7 +15,6 @@ public class AttackLight : AttackAbstract
         EffectCtrl effectCtrl = this.spawner.Spawn(this.GetEffect(), attackPoint.transform.position);
         EffectFlyAbstract effectFly = (EffectFlyAbstract)effectCtrl;
         effectFly.FlyToTarget.SetTarget(this.playerCtrl.CrosshairPointer.transform);
-
         effectCtrl.gameObject.SetActive(true);
 
         Debug.LogError(this.attackPoint.transform.position);

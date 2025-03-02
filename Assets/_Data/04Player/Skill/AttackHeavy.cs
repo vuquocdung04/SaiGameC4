@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackHeavy : AttackAbstract
 {
     AttackPoint attackPoint;
-    string effectName = "Fire2";
+    string effectName = "MagicFire";
 
     protected float timer = 0;
     protected float delay = 0.1f;

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 
 
-public class EffectDamageSender : DamageSender
+public abstract class EffectDamageSender : DamageSender
 {
     [Header("BulletDamageSender")]
     [SerializeField] protected SphereCollider sphereCollider;
@@ -41,10 +41,22 @@ public class EffectDamageSender : DamageSender
 
     #endregion
 
-    protected override void Send(DamageReceiver damageReceiever)
+    protected override void Send(DamageReceiver damageReceiever, Collider other)
     {
-        base.Send(damageReceiever);
+        base.Send(damageReceiever, other);
+        this.ShowHitEffect(other);
+
         this.EffectCtrl.DespawnBase.DoDespawn();
         //this.despawn
     }
+
+    protected virtual void ShowHitEffect(Collider other)
+    {
+        Vector3 hitPoint = other.ClosestPoint(transform.position);
+        EffectCtrl prefab = EffectManager.Instance.EffectPrefabs.GetByName(this.GetHitName());
+        EffectCtrl newHit = EffectManager.Instance.Spawner.Spawn(prefab,hitPoint);
+        newHit.gameObject.SetActive(true);
+    }
+
+    protected abstract string GetHitName();
 }
