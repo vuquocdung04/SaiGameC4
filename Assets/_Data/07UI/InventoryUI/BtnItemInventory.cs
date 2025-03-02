@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BtnItemInventory : ButtonAbstract
 {
     [Header("BtnItemInventory")]
-    [SerializeField] protected TMP_Text itemTextName;
+    [SerializeField] protected Image itemImage;
     [SerializeField] protected TMP_Text itemTextCount;
 
 
@@ -39,8 +40,12 @@ public class BtnItemInventory : ButtonAbstract
 
     protected virtual void ItemUpdating()
     {
-        this.itemTextName.text = itemInventory.itemProfile.itemCode.ToString();
-        this.itemTextCount.text = itemInventory.itemCount.ToString();
+        //this.itemImage.sprite = itemInventory.itemProfile.itemCode.ToString();
+        this.itemImage.sprite = itemInventory.itemProfile.itemSprite;
+        if (this.itemTextCount != null)
+        {
+            this.itemTextCount.text = itemInventory.itemCount.ToString();
+        }
 
         if (this.itemInventory.itemCount == 0) Destroy(gameObject);
     }
@@ -51,21 +56,21 @@ public class BtnItemInventory : ButtonAbstract
     {
         base.LoadComponents();
         this.LoadTextCount();
-        this.LoadTextName();
+        this.LoadItemImage();
     }
     protected virtual void LoadTextCount()
     {
         if (this.itemTextCount != null) return;
-        this.itemTextCount = transform.Find("ItemCount").GetComponent<TMP_Text>();
+        this.itemTextCount = GetComponentInChildren<TMP_Text>(true) ? GetComponentInChildren<TMP_Text>(true): null;
 
         Debug.LogWarning(transform.name + ": LoadTextCount", gameObject);
     }
-    protected virtual void LoadTextName()
+    protected virtual void LoadItemImage()
     {
-        if (this.itemTextName != null) return;
-        this.itemTextName = transform.Find("ItemName").GetComponent<TMP_Text>();
+        if (this.itemImage != null) return;
+        this.itemImage = transform.Find("ItemImage").GetComponent<Image>();
 
-        Debug.LogWarning(transform.name + ": LoadTextName", gameObject);
+        Debug.LogWarning(transform.name + ": LoadItemImage", gameObject);
     }
 
     #endregion

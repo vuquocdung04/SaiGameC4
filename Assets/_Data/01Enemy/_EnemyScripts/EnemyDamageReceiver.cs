@@ -75,7 +75,7 @@ public class EnemyDamageReceiver : DamageReceiver
     {
         ItemDropManager.Instance.DropMany(ItemCode.Gold,2,transform.position);
         ItemDropManager.Instance.DropMany(ItemCode.Wand,1,transform.position);
-        ItemDropManager.Instance.DropMany(ItemCode.PotionMana,2,transform.position);
+        ItemDropManager.Instance.DropMany(ItemCode.PotionMana,10,transform.position);
         ItemDropManager.Instance.DropMany(ItemCode.PlayerExp,10,transform.position);
     }
 }

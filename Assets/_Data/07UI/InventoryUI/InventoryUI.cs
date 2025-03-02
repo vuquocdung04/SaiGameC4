@@ -9,7 +9,7 @@ public class InventoryUI : Singleton<InventoryUI>
 
     [SerializeField] protected Transform showInventory;
     //Btn itemNot stack
-    [SerializeField] protected BtnItemInventory defaultItemInventoryUI;
+    [SerializeField] protected List<BtnItemInventory> ItemInventorys;
     protected List<BtnItemInventory> btnItems = new();
     private void Start()
     {
@@ -50,7 +50,8 @@ public class InventoryUI : Singleton<InventoryUI>
 
     protected virtual void HideDefaultItemInventory()
     {
-        this.defaultItemInventoryUI.gameObject.SetActive(false);
+        this.ItemInventorys[0].gameObject.SetActive(false);
+        this.ItemInventorys[1].gameObject.SetActive(false);
     }
 
     protected virtual void ItemUpdating()
@@ -62,14 +63,14 @@ public class InventoryUI : Singleton<InventoryUI>
             if(newBtnItemUI == null)
             {
                 if (!itemInventory.itemProfile.isStackable)
-                    newBtnItemUI = Instantiate(this.defaultItemInventoryUI);
+                    newBtnItemUI = Instantiate(this.ItemInventorys[0]);
                 else
                 {
                     //note: sinh ra item not stackable
-                    newBtnItemUI = Instantiate(this.defaultItemInventoryUI);
+                    newBtnItemUI = Instantiate(this.ItemInventorys[1]);
                 }
                 Debug.LogError("Sinh ra 1 button");
-                newBtnItemUI.transform.SetParent(this.defaultItemInventoryUI.transform.parent);
+                newBtnItemUI.transform.SetParent(this.ItemInventorys[0].transform.parent);
                 newBtnItemUI.SetItem(itemInventory);
                 newBtnItemUI.transform.localScale = Vector3.one;
                 newBtnItemUI.gameObject.SetActive(true);
@@ -100,12 +101,12 @@ public class InventoryUI : Singleton<InventoryUI>
     }
     protected virtual void LoadBtnItemInventory()
     {
-        if (this.defaultItemInventoryUI != null) return;
-        this.defaultItemInventoryUI = GetComponentInChildren<BtnItemInventory>();
+        if (this.ItemInventorys.Count > 0) return;
+        BtnItemInventory[] childBtns = GetComponentsInChildren<BtnItemInventory>();
+        this.ItemInventorys = new List<BtnItemInventory>(childBtns);
 
         Debug.LogWarning(transform.name + ": LoadBtnItemInventory", gameObject);
     }
-
     protected virtual void LoadShowInventory()
     {
         if (this.showInventory != null) return;

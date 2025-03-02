@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/ItemProfile",order = 1)]
 public class ItemProfileSO : ScriptableObject
 {
+    public Sprite itemSprite;
     public ItemCode itemCode;
     public InventoryCodeName inventoryCode;
     // co gop chung duoc khong
