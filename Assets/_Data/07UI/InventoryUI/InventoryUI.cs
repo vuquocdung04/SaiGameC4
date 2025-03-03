@@ -10,18 +10,19 @@ public class InventoryUI : Singleton<InventoryUI>
     [SerializeField] protected Transform showInventory;
     //Btn itemNot stack
     [SerializeField] protected List<BtnItemInventory> ItemInventorys;
-    protected List<BtnItemInventory> btnItems = new();
+    [SerializeField] protected List<BtnItemInventory> btnItems = new();
+    public List<BtnItemInventory> BtnItems => btnItems;
     private void Start()
     {
         this.Hide();
         this.HideDefaultItemInventory();
-        ObserverManager.AddObserver(Const.ShowWand,ItemUpdating);
+        ObserverManager.AddObserver(Const.UpdateUiInventory,ItemUpdating);
         ObserverManager.AddObserver(Const.HotKeyUI,this.HotKeyToggleInventory);
     }
 
     private void OnDestroy()
     {
-        ObserverManager.RemoveObserver(Const.ShowWand,ItemUpdating);
+        ObserverManager.RemoveObserver(Const.UpdateUiInventory, ItemUpdating);
         ObserverManager.RemoveObserver(Const.HotKeyUI, this.HotKeyToggleInventory);
     }
 
@@ -63,11 +64,14 @@ public class InventoryUI : Singleton<InventoryUI>
             if(newBtnItemUI == null)
             {
                 if (!itemInventory.itemProfile.isStackable)
+                {
                     newBtnItemUI = Instantiate(this.ItemInventorys[0]);
+                    Debug.LogError("CheckItemNotStack");
+                }
                 else
                 {
-                    //note: sinh ra item not stackable
                     newBtnItemUI = Instantiate(this.ItemInventorys[1]);
+                    Debug.LogError("CheckItemStack");
                 }
                 Debug.LogError("Sinh ra 1 button");
                 newBtnItemUI.transform.SetParent(this.ItemInventorys[0].transform.parent);
@@ -78,8 +82,16 @@ public class InventoryUI : Singleton<InventoryUI>
                 newBtnItemUI.name = itemInventory.itemName + "_" + itemInventory.itemId;
                 this.btnItems.Add(newBtnItemUI);
             }
-
+            if(btnItems.Count > 0)
+            StartCoroutine(UpdateSpriteCountUI());
         }
+    }
+
+    IEnumerator UpdateSpriteCountUI()
+    {
+        yield return new WaitForEndOfFrame();
+        ObserverManager.Notify(Const.UpdateSpriteBtn);
+
     }
 
     protected virtual BtnItemInventory GetExitsItem(ItemInventory itemInventory)
@@ -114,6 +126,7 @@ public class InventoryUI : Singleton<InventoryUI>
 
         Debug.LogWarning(transform.name + ": LoadShowInventory", gameObject);
     }
+
 
     #endregion
 }

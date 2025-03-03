@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ItemDropDespawn : Despawn<ItemDropCtrl>
 {
+
+    protected override void ResetValues()
+    {
+        base.ResetValues();
+        this.timeLife = 3f;
+    }
     public override void DoDespawn()
     {
         ItemDropCtrl itemDropCtrl = (ItemDropCtrl)this.parent;
@@ -16,7 +22,9 @@ public class ItemDropDespawn : Despawn<ItemDropCtrl>
         InventoryManager.Instance.GetByCodeName(itemDropCtrl.InventoryCodeName).AddItem(item);
         base.DoDespawn();
         ObserverManager.Notify(Const.TextGoldCount);
-        ObserverManager.Notify(Const.ShowWand);
         ObserverManager.Notify(Const.PlayerLevel);
+        ObserverManager.Notify(Const.UpdateUiInventory);
+
     }
+
 }

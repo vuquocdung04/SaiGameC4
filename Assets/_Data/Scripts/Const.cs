@@ -18,6 +18,8 @@ public static class Const
     public const string ShowWand = "ShowWand";
     public const string PlayerLevel = "PlayerLevel";
 
+    public const string UpdateUiInventory = "UpdateUiInventory";
+    public const string UpdateSpriteBtn = "UpdateSpriteBtn";
 
     public const string HpBar = "HpBar";
 

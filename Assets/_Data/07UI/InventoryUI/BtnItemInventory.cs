@@ -15,19 +15,19 @@ public class BtnItemInventory : ButtonAbstract
     protected ItemInventory itemInventory;
     public ItemInventory ItemInventory => itemInventory;
 
-    /// <summary>
-    /// Observer
-    /// </summary>
     protected override void Start()
     {
-        
+        ObserverManager.AddObserver(Const.UpdateSpriteBtn, this.BtnItemUpdating);
     }
-
-    private void FixedUpdate()
+    private void OnDestroy()
     {
-        this.ItemUpdating();
+        ObserverManager.RemoveObserver(Const.UpdateSpriteBtn, this.BtnItemUpdating);
     }
 
+    //private void FixedUpdate()
+    //{
+    //    this.BtnItemUpdating();
+    //}
 
     public virtual void SetItem(ItemInventory itemInventory)
     {
@@ -38,13 +38,14 @@ public class BtnItemInventory : ButtonAbstract
         Debug.Log("Item Click");
     }
 
-    protected virtual void ItemUpdating()
+    //update sprite ui
+    protected virtual void BtnItemUpdating()
     {
         //this.itemImage.sprite = itemInventory.itemProfile.itemCode.ToString();
         this.itemImage.sprite = itemInventory.itemProfile.itemSprite;
         if (this.itemTextCount != null)
         {
-            this.itemTextCount.text = itemInventory.itemCount.ToString();
+            this.itemTextCount.text = "x" + itemInventory.itemCount.ToString();
         }
 
         if (this.itemInventory.itemCount == 0) Destroy(gameObject);
