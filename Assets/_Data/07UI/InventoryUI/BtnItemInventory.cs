@@ -24,10 +24,6 @@ public class BtnItemInventory : ButtonAbstract
         ObserverManager.RemoveObserver(Const.UpdateSpriteBtn, this.BtnItemUpdating);
     }
 
-    //private void FixedUpdate()
-    //{
-    //    this.BtnItemUpdating();
-    //}
 
     public virtual void SetItem(ItemInventory itemInventory)
     {
@@ -41,7 +37,6 @@ public class BtnItemInventory : ButtonAbstract
     //update sprite ui
     protected virtual void BtnItemUpdating()
     {
-        //this.itemImage.sprite = itemInventory.itemProfile.itemCode.ToString();
         this.itemImage.sprite = itemInventory.itemProfile.itemSprite;
         if (this.itemTextCount != null)
         {

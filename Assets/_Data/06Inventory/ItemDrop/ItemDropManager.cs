@@ -36,7 +36,7 @@ public class ItemDropManager : Singleton<ItemDropManager>
         // spawner ra item
         ItemDropCtrl newItem = this.itemDropSpawner.Spawn(itemDropCtrl, dropPos);
 
-        Debug.LogError(newItem.InventoryCodeName);
+        //Debug.LogError(newItem.InventoryCodeName);
 
         switch (itemDropCtrl.name)
         {

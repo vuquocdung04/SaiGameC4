@@ -24,8 +24,6 @@ public class AttackHeavy : AttackAbstract
         effectFly.FlyToTarget.SetTarget(this.playerCtrl.CrosshairPointer.transform);
 
         effectCtrl.gameObject.SetActive(true);
-
-        Debug.LogError(this.attackPoint.transform.position);
     }
 
     protected virtual EffectCtrl GetEffect()

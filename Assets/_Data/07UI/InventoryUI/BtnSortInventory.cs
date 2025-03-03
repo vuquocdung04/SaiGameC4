@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BtnSortInventory : ButtonAbstract
@@ -10,11 +11,7 @@ public class BtnSortInventory : ButtonAbstract
     protected override void OnClick()
     {
         if (inventoryUI.BtnItems.Count < 1) return;
-
-        foreach (var itemBtn in inventoryUI.BtnItems)
-        {
-
-        }
+        ObserverManager.Notify(Const.sortItemInventory);
     }
 
     #region LoadComponent

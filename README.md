@@ -95,7 +95,15 @@ ___
 ## 🌅Ngày 28/2: E81
 ## 🌅Ngày 1/3: E81 -> E84:
 - Level cơ bản: như mọi lần thì dùng observer thay cho fixupdate
-## 🌅Ngày 2/3: E85:
+## 🌅Ngày 2/3: E85-> E89:
 - Sourcetree: có tính năng revertCommit
 	- vd: làm nhặng rồi đẩy lên git, xong bấm revertCommit nó sẽ quay lại commit gần nhất
 - Projectile nay bắn ra nó cứ ngang ngang không bay thẳng => do model =)), sửa lại -90 là hoạt động perfect
+## 🌅Ngày 3/3: Chia hành lí, tự phát triển =))
+- Nay thay vì fixupdate để update BtnItemUi
+	- hiểu đơn giản update sprite với  itemcount
+	- Thì gọi observer thay thế
+	- Nhưng bị lỗi, khi tắt inventory thì observer sẽ không nhận được sự kiện do bị setActive(false)
+	- 👉 tối nay mới nghĩ ra, sáng tìm mãi
+		- để Observer.Notify vào cái method Show(để setActive(true) inventory)
+		- sáng để trong Button Toggle thì nó không chạy =)) 

@@ -21,6 +21,10 @@ public static class Const
     public const string UpdateUiInventory = "UpdateUiInventory";
     public const string UpdateSpriteBtn = "UpdateSpriteBtn";
 
+
+    public const string sortItemInventory = "sortItemInventory"; 
+
+
     public const string HpBar = "HpBar";
 
     public const string HotKeyUI = "HoyKeyShowUI";
