@@ -12,10 +12,18 @@ public class InputManager : Singleton<InputManager>
     protected bool isAttackHeavy = false;
 
 
+    protected bool isAttackFall = false;
+
     private void Update()
     {
         this.CheckAiming();
         this.CheckAttackLight();
+        this.CheckAttackFall();
+    }
+
+    protected virtual void CheckAttackFall()
+    {
+        this.isAttackFall = Input.GetKeyDown(KeyCode.Alpha2);
     }
 
     protected virtual void CheckAttackLight()
@@ -36,7 +44,10 @@ public class InputManager : Singleton<InputManager>
         }
         else this.isAttackLight = false;
 
-        if (this.attackHold > this.attackLightLimit) this.isAttackHeavy = true;
+        if (this.attackHold > this.attackLightLimit)
+        {
+            this.isAttackHeavy = true;
+        }
         else this.isAttackHeavy = false;
     }
     protected virtual void CheckAiming()
@@ -56,5 +67,10 @@ public class InputManager : Singleton<InputManager>
     public virtual bool IsAttackHeavy()
     {
         return this.isAttackHeavy;
+    }
+
+    public virtual bool IsAttackFall()
+    {
+        return this.isAttackFall;
     }
 }

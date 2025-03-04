@@ -28,5 +28,8 @@ public static class Const
     public const string HpBar = "HpBar";
 
     public const string HotKeyUI = "HoyKeyShowUI";
+
+
+    //enemy
     #endregion
 }

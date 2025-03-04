@@ -43,6 +43,8 @@ public class EnemyDamageReceiver : DamageReceiver
 
     #endregion
 
+    
+
     protected override void OnDead()
     {
         base.OnDead();

@@ -18,6 +18,7 @@ public class BtnItemInventory : ButtonAbstract
     protected override void Start()
     {
         ObserverManager.AddObserver(Const.UpdateSpriteBtn, this.BtnItemUpdating);
+        
     }
     private void OnDestroy()
     {

@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class ObserverManager
 {
-    static Dictionary<string, List<Action>> listeners = new();
+    public static Dictionary<string, List<Action>> listeners = new();
 
     public static void AddObserver(string name, Action callback)
     {
         if (!listeners.ContainsKey(name))
             listeners.Add(name, new List<Action>());
-
         listeners[name].Add(callback);
     }
 

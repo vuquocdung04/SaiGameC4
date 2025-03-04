@@ -51,7 +51,6 @@ public class InventoryUI : Singleton<InventoryUI>
     {
         yield return null;
         ObserverManager.Notify(Const.UpdateSpriteBtn);
-
     }
 
     public virtual void Toggle()
